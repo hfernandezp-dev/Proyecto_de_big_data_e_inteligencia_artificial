@@ -1,0 +1,26 @@
+# Ignorar archivos CSV
+*.csv
+
+# Ignorar archivos Parquet
+*.parquet
+
+# Ignorar archivos BSON y JSON de MongoDB
+*.bson
+*.json
+
+# Ignorar directorios de dumps de MongoDB
+dump/
+backups/
+mongodb-dump/
+mongo-data/
+
+# Ignorar cualquier archivo de base de datos o logs de MongoDB
+*.lock
+*.ns
+*.0
+*.1
+*.2
+*.wt
+*.wt.turtle
+diagnostic.data/
+journal/
