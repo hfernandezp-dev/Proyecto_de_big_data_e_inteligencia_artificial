@@ -24,3 +24,5 @@ mongo-data/
 *.wt.turtle
 diagnostic.data/
 journal/
+
+.env
