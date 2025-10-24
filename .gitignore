@@ -1,5 +1,5 @@
 # Ignorar archivos CSV
-*.csv
+#*.csv
 
 # Ignorar archivos Parquet
 *.parquet
