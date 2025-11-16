@@ -26,3 +26,6 @@ diagnostic.data/
 journal/
 
 .env
+
+# Ignorar configuración de JetBrains
+.idea/
