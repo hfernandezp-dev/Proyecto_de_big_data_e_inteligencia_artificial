@@ -3,6 +3,7 @@
 
 # Ignorar archivos Parquet
 *.parquet
+*.csv
 
 # Ignorar archivos BSON y JSON de MongoDB
 *.bson
