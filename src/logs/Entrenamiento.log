@@ -1,0 +1,22 @@
+2025-11-17 18:16:50,603 - ERROR - Error en la carga de datos de entrenamiento y prueba: could not convert string to float: 'Basement Jaxx'
+2025-11-17 18:36:08,942 - ERROR - Error en la carga de datos de entrenamiento y prueba: could not convert string to float: 'Basement Jaxx'
+2025-11-17 18:41:54,249 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:44:55,501 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:46:18,871 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:46:23,092 - INFO - entrenamiento de kmeans: KMeans(n_clusters=4, n_init=10, random_state=42)
+2025-11-17 18:47:11,986 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:50:23,160 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:50:27,265 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.12048565119767442
+2025-11-17 18:54:07,141 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:54:11,036 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.26559320751616505
+2025-11-17 18:59:09,756 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 18:59:13,539 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
+2025-11-17 18:59:57,318 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 19:00:01,211 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.21997066939823018
+2025-11-17 19:03:07,614 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 19:03:11,442 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
+2025-11-17 19:03:11,442 - INFO -   - WCSS (Inercia): 2549.32
+2025-11-17 19:07:25,428 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-17 19:07:29,223 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
+2025-11-17 19:07:29,223 - INFO -   - WCSS (Inercia): 2549.32
+2025-11-17 19:07:29,225 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl

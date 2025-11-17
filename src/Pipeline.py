@@ -58,7 +58,7 @@ def limpieza_datos():
        df_spotify = df_spotify.withColumn('tempo', f.col('tempo').cast("Double"))
        df_spotify = df_spotify.filter((f.col('tempo') >= 40) & (f.col('tempo') <= 250))
        logging.info("Se ha limpiado el dataset de Spotify correctamente")
-       print(df_spotify.toPandas())
+       df_spotify=df_spotify.limit(1000)
        return df_spotify.toPandas()
 
    except Exception as e:

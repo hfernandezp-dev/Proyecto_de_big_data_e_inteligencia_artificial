@@ -94,3 +94,23 @@ C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia
 2025-11-17 18:02:47,697 - INFO - Se ha limpiado el dataset de Spotify correctamente
 2025-11-17 18:02:55,150 - INFO - División del dataset realizada correctamente
 2025-11-17 18:02:55,304 - INFO - Closing down clientserver connection
+2025-11-17 18:04:26,857 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:04:29,540 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:04:37,660 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:04:37,801 - INFO - Closing down clientserver connection
+2025-11-17 18:37:20,643 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:37:24,106 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:37:31,906 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:37:32,059 - INFO - Closing down clientserver connection
+2025-11-17 18:38:53,522 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:38:56,657 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:39:07,757 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:39:07,921 - INFO - Closing down clientserver connection
+2025-11-17 18:40:09,349 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:40:12,040 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:40:19,425 - INFO - Closing down clientserver connection
+2025-11-17 18:40:31,603 - INFO - Closing down clientserver connection
+2025-11-17 18:49:52,283 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:49:55,182 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:49:55,783 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:49:55,797 - INFO - Closing down clientserver connection
