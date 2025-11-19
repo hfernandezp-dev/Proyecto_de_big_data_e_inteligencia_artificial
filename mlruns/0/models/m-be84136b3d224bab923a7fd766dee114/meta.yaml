@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Usuario/Desktop/Master%20KIKO/Proyecto%20TFM/Proyecto_de_big_data_e_inteligencia_artificial/mlruns/0/models/m-be84136b3d224bab923a7fd766dee114/artifacts
+creation_timestamp: 1763554538779
+experiment_id: '0'
+last_updated_timestamp: 1763554548910
+model_id: m-be84136b3d224bab923a7fd766dee114
+model_type: null
+name: best_kmeans_model
+source_run_id: 10f1ca581da74966b0a0e56f5749cf3a
+status: 2
+status_message: null

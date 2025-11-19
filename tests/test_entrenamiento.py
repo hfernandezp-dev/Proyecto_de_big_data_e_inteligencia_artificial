@@ -62,7 +62,7 @@ def test_entrenamiento_guarda_modelo(tmp_path, monkeypatch):
 
     X_dummy = np.random.rand(10, 5)
 
-    entrenamiento(X_dummy)
+    entrenamiento(X_dummy,3,42)
 
     ruta_modelo = tmp_path / "modelos" / "kmeans_spotify_model.pkl"
     assert ruta_modelo.exists(), "No se ha guardado el modelo entrenado"
@@ -90,7 +90,7 @@ def test_entrenamiento_crea_directorio_modelos(tmp_path, monkeypatch):
     iniciar_logger()
 
     X_dummy = np.random.rand(5, 5)
-    entrenamiento(X_dummy)
+    entrenamiento(X_dummy,3,42)
 
     modelos_dir = Path(tmp_path) / "modelos"
     assert modelos_dir.is_dir(), "No se ha creado el directorio 'modelos'"
@@ -122,7 +122,7 @@ def test_modelo_guardado_es_kmeans(tmp_path, monkeypatch):
     iniciar_logger()
 
     X_dummy = np.random.rand(20, 5)
-    entrenamiento(X_dummy)
+    entrenamiento(X_dummy,2,42)
 
     ruta_modelo = Path(tmp_path) / "modelos" / "kmeans_spotify_model.pkl"
     modelo = joblib.load(ruta_modelo)

@@ -20,3 +20,29 @@
 2025-11-17 19:07:29,223 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
 2025-11-17 19:07:29,223 - INFO -   - WCSS (Inercia): 2549.32
 2025-11-17 19:07:29,225 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-11-19 14:02:22,744 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:02:22,744 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:02:22,744 - ERROR - Error en entrenamiento: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+2025-11-19 14:24:25,654 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:24:28,780 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:24:31,060 - ERROR - Error en entrenamiento: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+2025-11-19 14:26:29,143 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:26:38,148 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:26:50,577 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-11-19 14:26:50,580 - INFO - Modelo K-Means guardado en: modelos/
+2025-11-19 14:27:13,908 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:27:13,908 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:27:17,778 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-11-19 14:27:17,779 - INFO - Modelo K-Means guardado en: modelos/
+2025-11-19 14:30:01,892 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:30:01,892 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:30:05,998 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-11-19 14:30:05,999 - INFO - Modelo K-Means guardado en: modelos/
+2025-11-19 14:34:02,915 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:34:02,916 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:34:06,907 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-11-19 14:34:06,908 - INFO - Modelo K-Means guardado en: modelos/
+2025-11-19 14:40:10,911 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-11-19 14:40:10,911 - INFO - Ejecución simple de prueba (K=3):
+2025-11-19 14:40:14,791 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-11-19 14:40:14,800 - INFO - WCSS: 2549.32, Silhouette: 0.2575

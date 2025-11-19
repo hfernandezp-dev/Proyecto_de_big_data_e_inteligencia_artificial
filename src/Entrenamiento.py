@@ -8,7 +8,7 @@ from sklearn.metrics import silhouette_score
 import pandas as pd
 import numpy as np
 import joblib
-
+import time
 def iniciar_logger():
 
     log_dir = "logs"
@@ -45,19 +45,33 @@ def Cargar_Datos_Ruta():
         logging.error(f"Error en la carga de datos de entrenamiento y prueba: {e}")
 
 
-def entrenamiento(x_train):
+def entrenamiento(x_train,k,random_state):
     try:
-        kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+        tiempo_inicio = time.time()
+
+
+        kmeans = KMeans(n_clusters=k, random_state=random_state, n_init=10)
         kmeans.fit(x_train)
-        score = silhouette_score(x_train, kmeans.labels_)
-        score_wcss = kmeans.inertia_
-        logging.info(f"Modelo KMeans entrenado correctamente con silhouette score: {score}")
-        logging.info(f"  - WCSS (Inercia): {score_wcss:.2f}")
+        # score = silhouette_score(x_train, kmeans.labels_)
+        # score_wcss = kmeans.inertia_
+        # logging.info(f"Modelo KMeans entrenado correctamente con silhouette score: {score}")
+        # logging.info(f"  - WCSS (Inercia): {score_wcss:.2f}")
         RUTA_MODELO = 'modelos/'
         os.makedirs(RUTA_MODELO, exist_ok=True)
         nombre_modelo = os.path.join(RUTA_MODELO, 'kmeans_spotify_model.pkl')
         joblib.dump(kmeans, nombre_modelo)
         logging.info(f"Modelo K-Means guardado en: {nombre_modelo}")
+        tiempo_fin = time.time()
+        duracion = tiempo_fin - tiempo_inicio
+        score_wcss = kmeans.inertia_
+        score_silueta = silhouette_score(x_train, kmeans.labels_) if k > 1 else 0
+        return {
+            'model': kmeans,
+            'k': k,
+            'wcss': score_wcss,
+            'silhouette': score_silueta,
+            'duration_sec': duracion
+        }
 
 
     except Exception as e:
@@ -65,5 +79,15 @@ def entrenamiento(x_train):
 
 if __name__ == "__main__":
     iniciar_logger()
-    x_train,x_test=Cargar_Datos_Ruta()
-    entrenamiento(x_train)
+    x_train, x_test=Cargar_Datos_Ruta()
+    if x_train is not None:
+        logging.info("Ejecución simple de prueba (K=3):")
+        resultados=entrenamiento(x_train,3,42)
+        logging.info(f"WCSS: {resultados['wcss']:.2f}, Silhouette: {resultados['silhouette']:.4f}")
+        # RUTA_MODELO = 'modelos/'
+        # os.makedirs(RUTA_MODELO, exist_ok=True)
+        # joblib.dump(resultados['model'], 'modelos/kmeans_prueba_simple.pkl')
+        # logging.info(f"Modelo K-Means guardado en: {RUTA_MODELO}")
+    else:
+        logging.error("No se pudo cargar el set de entrenamiento")
+

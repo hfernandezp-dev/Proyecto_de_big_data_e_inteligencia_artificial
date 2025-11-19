@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Usuario/Desktop/Master%20KIKO/Proyecto%20TFM/Proyecto_de_big_data_e_inteligencia_artificial/mlruns/0/1e277724d9bf486cb6a02c3df2fcfed1/artifacts
+end_time: 1763554538668
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1e277724d9bf486cb6a02c3df2fcfed1
+run_name: KMeans_k_5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763554538439
+status: 3
+tags: []
+user_id: Usuario
