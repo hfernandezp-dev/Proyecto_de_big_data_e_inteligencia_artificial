@@ -13,10 +13,7 @@ def _crear_parquets_dummy(base_dir):
     datasets_dir = base_dir / "datasets"
     datasets_dir.mkdir()
 
-    # Columnas NUMÉRICAS que usa el entrenamiento
     clust_feats = ['instrumentalness', 'speechiness', 'danceability', 'valence', 'tempo']
-
-    # Añadimos también las columnas de texto que luego se eliminan
     cols_texto = ['artist_name', 'track_name', 'track_id', 'genre']
 
     df_train = pd.DataFrame({
@@ -42,7 +39,6 @@ def test_cargar_datos_ruta_devuelve_arrays_escalados(tmp_path, monkeypatch):
     Debe devolver dos arrays numpy con 5 columnas (las de clust_feats),
     sin las columnas de texto.
     """
-    # Trabajamos en un directorio temporal para no ensuciar el proyecto
     monkeypatch.chdir(tmp_path)
     _crear_parquets_dummy(tmp_path)
 
@@ -53,7 +49,6 @@ def test_cargar_datos_ruta_devuelve_arrays_escalados(tmp_path, monkeypatch):
     assert isinstance(X_train_scaled, np.ndarray)
     assert isinstance(X_test_scaled, np.ndarray)
 
-    # 3 filas, 5 columnas
     assert X_train_scaled.shape == (3, 5)
     assert X_test_scaled.shape == (3, 5)
 
@@ -65,7 +60,6 @@ def test_entrenamiento_guarda_modelo(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     iniciar_logger()
 
-    # Creamos un array aleatorio pequeño de 10 filas x 5 columnas
     X_dummy = np.random.rand(10, 5)
 
     entrenamiento(X_dummy)
@@ -112,7 +106,6 @@ def test_cargar_datos_ruta_estandariza_features(tmp_path, monkeypatch):
     iniciar_logger()
     X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
 
-    # Media cercana a 0 y desviación cercana a 1 en cada columna
     medias = X_train_scaled.mean(axis=0)
     desvios = X_train_scaled.std(axis=0)
 
@@ -132,11 +125,8 @@ def test_modelo_guardado_es_kmeans(tmp_path, monkeypatch):
     entrenamiento(X_dummy)
 
     ruta_modelo = Path(tmp_path) / "modelos" / "kmeans_spotify_model.pkl"
-
-    # Cargar el modelo con joblib (igual que en Entrenamiento.py)
     modelo = joblib.load(ruta_modelo)
 
-    # Tiene los atributos esperados de un KMeans
     assert hasattr(modelo, "cluster_centers_")
     assert hasattr(modelo, "n_clusters")
     assert modelo.n_clusters > 1
