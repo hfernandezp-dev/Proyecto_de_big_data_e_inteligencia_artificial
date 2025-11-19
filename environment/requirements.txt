@@ -11,3 +11,5 @@ seaborn==0.13.2
 python-dotenv==1.1.1
 scikit-learn==1.4.2
 joblib
+findspark
+pyarrow
