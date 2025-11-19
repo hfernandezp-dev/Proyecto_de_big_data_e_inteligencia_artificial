@@ -52,10 +52,6 @@ def entrenamiento(x_train,k,random_state):
 
         kmeans = KMeans(n_clusters=k, random_state=random_state, n_init=10)
         kmeans.fit(x_train)
-        # score = silhouette_score(x_train, kmeans.labels_)
-        # score_wcss = kmeans.inertia_
-        # logging.info(f"Modelo KMeans entrenado correctamente con silhouette score: {score}")
-        # logging.info(f"  - WCSS (Inercia): {score_wcss:.2f}")
         RUTA_MODELO = 'modelos/'
         os.makedirs(RUTA_MODELO, exist_ok=True)
         nombre_modelo = os.path.join(RUTA_MODELO, 'kmeans_spotify_model.pkl')
@@ -84,10 +80,6 @@ if __name__ == "__main__":
         logging.info("Ejecución simple de prueba (K=3):")
         resultados=entrenamiento(x_train,3,42)
         logging.info(f"WCSS: {resultados['wcss']:.2f}, Silhouette: {resultados['silhouette']:.4f}")
-        # RUTA_MODELO = 'modelos/'
-        # os.makedirs(RUTA_MODELO, exist_ok=True)
-        # joblib.dump(resultados['model'], 'modelos/kmeans_prueba_simple.pkl')
-        # logging.info(f"Modelo K-Means guardado en: {RUTA_MODELO}")
     else:
         logging.error("No se pudo cargar el set de entrenamiento")
 
