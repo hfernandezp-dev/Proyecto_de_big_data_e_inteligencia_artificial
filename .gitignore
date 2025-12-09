@@ -27,6 +27,6 @@ diagnostic.data/
 journal/
 
 .env
-
+kaggle.json
 # Ignorar configuración de JetBrains
 .idea/
