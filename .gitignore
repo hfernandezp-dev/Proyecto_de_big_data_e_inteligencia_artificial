@@ -3,6 +3,7 @@
 
 # Ignorar archivos Parquet
 *.parquet
+*.csv
 
 # Ignorar archivos BSON y JSON de MongoDB
 *.bson
@@ -26,6 +27,6 @@ diagnostic.data/
 journal/
 
 .env
-
+kaggle.json
 # Ignorar configuración de JetBrains
 .idea/

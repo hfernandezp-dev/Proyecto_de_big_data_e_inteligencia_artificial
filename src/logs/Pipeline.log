@@ -1,0 +1,116 @@
+
+2025-11-17 17:24:09,814 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:24:15,524 - ERROR - Error al iniciar Spark:
+ [CANNOT_CONVERT_COLUMN_INTO_BOOL] Cannot convert column into bool: please use '&' for 'and', '|' for 'or', '~' for 'not' when building DataFrame boolean expressions.
+2025-11-17 17:24:15,533 - INFO - Closing down clientserver connection
+2025-11-17 17:25:24,014 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:25:27,012 - ERROR - Error en la limpieza de datos:
+ [CANNOT_CONVERT_COLUMN_INTO_BOOL] Cannot convert column into bool: please use '&' for 'and', '|' for 'or', '~' for 'not' when building DataFrame boolean expressions.
+2025-11-17 17:25:27,020 - INFO - Closing down clientserver connection
+2025-11-17 17:26:00,512 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:26:03,606 - ERROR - Error en la limpieza de datos:
+ [CANNOT_CONVERT_COLUMN_INTO_BOOL] Cannot convert column into bool: please use '&' for 'and', '|' for 'or', '~' for 'not' when building DataFrame boolean expressions.
+2025-11-17 17:26:03,615 - INFO - Closing down clientserver connection
+2025-11-17 17:27:26,031 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:27:29,047 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:27:29,057 - INFO - Closing down clientserver connection
+2025-11-17 17:39:53,190 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:39:56,667 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:39:57,175 - ERROR - Error en la limpieza de datos:
+ [CAST_INVALID_INPUT] The value '134.066' of the type "STRING" cannot be cast to "BIGINT" because it is malformed. Correct the value as per the syntax, or change its target type. Use `try_cast` to tolerate malformed input and return NULL instead. SQLSTATE: 22018
+== DataFrame ==
+"__ge__" was called from
+C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\Pipeline.py:59
+
+2025-11-17 17:39:57,226 - INFO - Closing down clientserver connection
+2025-11-17 17:42:11,560 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:42:14,514 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:42:18,615 - INFO - Closing down clientserver connection
+2025-11-17 17:50:19,821 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:50:22,755 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:50:25,881 - ERROR - Error en la dividir de datos: "['popularity'] not found in axis"
+2025-11-17 17:50:25,971 - INFO - Closing down clientserver connection
+2025-11-17 17:52:08,051 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:52:12,568 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:52:36,227 - ERROR - Error en la dividir de datos: "['popularity'] not found in axis"
+2025-11-17 17:52:39,305 - INFO - Closing down clientserver connection
+2025-11-17 17:54:15,966 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:54:18,507 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:54:24,820 - ERROR - Error en la dividir de datos: "['popularity'] not found in axis"
+2025-11-17 17:54:24,903 - INFO - Closing down clientserver connection
+2025-11-17 17:56:25,557 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:56:28,487 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:56:32,513 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,392 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,404 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,408 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,414 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,432 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,450 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,457 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,462 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,471 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,483 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,518 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,523 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,533 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,537 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,544 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,550 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,573 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,588 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,590 - INFO - Closing down clientserver connection
+2025-11-17 17:56:45,593 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,082 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,096 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,119 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,126 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,129 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,140 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,163 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,188 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,193 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,196 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,209 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,220 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,249 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,285 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,289 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,299 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,303 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,312 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,316 - INFO - Closing down clientserver connection
+2025-11-17 17:56:55,318 - INFO - Closing down clientserver connection
+2025-11-17 17:58:15,347 - INFO - Closing down clientserver connection
+2025-11-17 17:58:45,272 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 17:58:47,676 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 17:58:51,653 - INFO - Closing down clientserver connection
+2025-11-17 17:59:06,392 - INFO - Closing down clientserver connection
+2025-11-17 18:00:28,042 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:00:30,609 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:00:37,339 - ERROR - Error en la dividir de datos: 'Series' object has no attribute 'to_parquet'
+2025-11-17 18:00:37,473 - INFO - Closing down clientserver connection
+2025-11-17 18:02:44,782 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:02:47,697 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:02:55,150 - INFO - División del dataset realizada correctamente
+2025-11-17 18:02:55,304 - INFO - Closing down clientserver connection
+2025-11-17 18:04:26,857 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:04:29,540 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:04:37,660 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:04:37,801 - INFO - Closing down clientserver connection
+2025-11-17 18:37:20,643 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:37:24,106 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:37:31,906 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:37:32,059 - INFO - Closing down clientserver connection
+2025-11-17 18:38:53,522 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:38:56,657 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:39:07,757 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:39:07,921 - INFO - Closing down clientserver connection
+2025-11-17 18:40:09,349 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:40:12,040 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:40:19,425 - INFO - Closing down clientserver connection
+2025-11-17 18:40:31,603 - INFO - Closing down clientserver connection
+2025-11-17 18:49:52,283 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-11-17 18:49:55,182 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-11-17 18:49:55,783 - INFO - División del dataset realizada correctamente em datasets/
+2025-11-17 18:49:55,797 - INFO - Closing down clientserver connection

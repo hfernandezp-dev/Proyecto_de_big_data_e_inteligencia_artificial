@@ -1,0 +1,14 @@
+artifact_path: file:///C:/Users/Usuario/Desktop/Master%20KIKO/Proyecto%20TFM/Proyecto_de_big_data_e_inteligencia_artificial/mlruns/0/models/m-be84136b3d224bab923a7fd766dee114/artifacts
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 3.6.0
+model_id: m-be84136b3d224bab923a7fd766dee114
+model_size_bytes: 4
+model_uuid: m-be84136b3d224bab923a7fd766dee114
+prompts: null
+run_id: 10f1ca581da74966b0a0e56f5749cf3a
+utc_time_created: '2025-11-19 12:15:38.790096'
