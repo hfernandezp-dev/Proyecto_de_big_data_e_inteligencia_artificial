@@ -46,3 +46,52 @@
 2025-11-19 14:40:10,911 - INFO - Ejecución simple de prueba (K=3):
 2025-11-19 14:40:14,791 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
 2025-11-19 14:40:14,800 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-12 18:26:26,495 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 18:26:26,495 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 18:26:34,039 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 18:26:34,049 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-12 18:32:54,440 - ERROR - Error en la carga de datos de entrenamiento y prueba: name 'x_train' is not defined
+2025-12-12 18:34:23,148 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 18:34:23,148 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 18:34:27,029 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 18:34:27,036 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-12 19:09:53,833 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 19:09:53,833 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 19:10:00,153 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 19:10:00,160 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-12 19:14:53,801 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 19:14:53,801 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 19:14:57,663 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 19:14:57,671 - INFO - WCSS: 1789.30, Silhouette: 0.2535
+2025-12-12 19:19:26,632 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 19:19:26,632 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 19:19:30,637 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 19:19:30,645 - INFO - WCSS: 1116.72, Silhouette: 0.2155
+2025-12-12 19:20:38,472 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 19:20:38,472 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 19:20:42,441 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 19:20:42,448 - INFO - WCSS: 1379.06, Silhouette: 0.2374
+2025-12-12 19:27:47,105 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 19:27:47,105 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 19:27:51,218 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 19:27:51,225 - INFO - WCSS: 1116.72, Silhouette: 0.2155
+2025-12-12 19:29:00,231 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-12 19:29:00,231 - INFO - Ejecución simple de prueba (K=3):
+2025-12-12 19:29:04,162 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-12 19:29:04,168 - INFO - WCSS: 1625.61, Silhouette: 0.2323
+2025-12-13 00:09:41,335 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-13 00:09:41,335 - INFO - Ejecución simple de prueba (K=3):
+2025-12-13 00:09:49,189 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-13 00:09:49,201 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-13 00:10:54,750 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-13 00:10:54,750 - INFO - Ejecución simple de prueba (K=3):
+2025-12-13 00:10:58,654 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-13 00:10:58,661 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-13 00:16:46,915 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-13 00:16:46,915 - INFO - Ejecución simple de prueba (K=4):
+2025-12-13 00:16:50,754 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-13 00:16:50,761 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-13 00:19:58,177 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-13 00:19:58,177 - INFO - Ejecución simple de prueba (K=4):
+2025-12-13 00:20:02,099 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-13 00:20:02,107 - INFO - WCSS: 2158.50, Silhouette: 0.2656

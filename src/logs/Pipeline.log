@@ -114,3 +114,7 @@ C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia
 2025-11-17 18:49:55,182 - INFO - Se ha limpiado el dataset de Spotify correctamente
 2025-11-17 18:49:55,783 - INFO - División del dataset realizada correctamente em datasets/
 2025-11-17 18:49:55,797 - INFO - Closing down clientserver connection
+2025-12-13 00:19:17,637 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-12-13 00:19:20,716 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-13 00:19:21,282 - INFO - División del dataset realizada correctamente em datasets/
+2025-12-13 00:19:21,293 - INFO - Closing down clientserver connection

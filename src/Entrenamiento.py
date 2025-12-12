@@ -39,13 +39,13 @@ def Cargar_Datos_Ruta():
         X_test_scaled = scaler.transform(X_test)
         logging.info("Datos de entrenamiento y prueba cargados y escalados correctamente")
 
-        return X_train_scaled, X_test_scaled
+        return X_train_scaled, X_test_scaled,scaler
 
     except Exception as e:
         logging.error(f"Error en la carga de datos de entrenamiento y prueba: {e}")
 
 
-def entrenamiento(x_train,k,random_state):
+def entrenamiento(x_train,k,random_state,scaler):
     try:
         tiempo_inicio = time.time()
 
@@ -55,7 +55,9 @@ def entrenamiento(x_train,k,random_state):
         RUTA_MODELO = 'modelos/'
         os.makedirs(RUTA_MODELO, exist_ok=True)
         nombre_modelo = os.path.join(RUTA_MODELO, 'kmeans_spotify_model.pkl')
+        nombre_modelo_scaler = os.path.join(RUTA_MODELO, 'scaler.pkl')
         joblib.dump(kmeans, nombre_modelo)
+        joblib.dump(scaler, nombre_modelo_scaler)
         logging.info(f"Modelo K-Means guardado en: {nombre_modelo}")
         tiempo_fin = time.time()
         duracion = tiempo_fin - tiempo_inicio
@@ -75,10 +77,10 @@ def entrenamiento(x_train,k,random_state):
 
 if __name__ == "__main__":
     iniciar_logger()
-    x_train, x_test=Cargar_Datos_Ruta()
+    x_train, x_test,scaler=Cargar_Datos_Ruta()
     if x_train is not None:
-        logging.info("Ejecución simple de prueba (K=3):")
-        resultados=entrenamiento(x_train,3,42)
+        logging.info("Ejecución simple de prueba (K=4):")
+        resultados=entrenamiento(x_train,4,42,scaler)
         logging.info(f"WCSS: {resultados['wcss']:.2f}, Silhouette: {resultados['silhouette']:.4f}")
     else:
         logging.error("No se pudo cargar el set de entrenamiento")
