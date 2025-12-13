@@ -118,3 +118,13 @@ C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia
 2025-12-13 00:19:20,716 - INFO - Se ha limpiado el dataset de Spotify correctamente
 2025-12-13 00:19:21,282 - INFO - División del dataset realizada correctamente em datasets/
 2025-12-13 00:19:21,293 - INFO - Closing down clientserver connection
+2025-12-13 11:03:20,988 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-12-13 11:03:27,371 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-13 11:03:28,118 - INFO - División del dataset realizada correctamente em datasets/
+2025-12-13 11:03:28,127 - INFO - Closing down clientserver connection
+2025-12-13 11:06:35,866 - INFO - ¡Clúster de Spark virtual iniciado con éxito! con la version 4.0.1
+2025-12-13 11:06:38,392 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-13 11:06:38,396 - ERROR - Error en la limpieza de datos:
+ [ATTRIBUTE_NOT_SUPPORTED] Attribute `to_csv` is not supported.
+2025-12-13 11:06:38,396 - ERROR - Error en la dividir de datos: 'NoneType' object has no attribute 'drop'
+2025-12-13 11:06:38,406 - INFO - Closing down clientserver connection

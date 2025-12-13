@@ -5,6 +5,8 @@ import joblib
 
 from src.Entrenamiento import Cargar_Datos_Ruta, entrenamiento, iniciar_logger
 
+scaler_global=None
+
 def _crear_parquets_dummy(base_dir):
     """
     Crea ficheros X_train.parquet y X_test.parquet mínimos
@@ -43,7 +45,8 @@ def test_cargar_datos_ruta_devuelve_arrays_escalados(tmp_path, monkeypatch):
     _crear_parquets_dummy(tmp_path)
 
     iniciar_logger()
-    X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
+    X_train_scaled, X_test_scaled,scaler = Cargar_Datos_Ruta()
+    scaler_global=scaler
 
     # Tipos
     assert isinstance(X_train_scaled, np.ndarray)
@@ -62,7 +65,7 @@ def test_entrenamiento_guarda_modelo(tmp_path, monkeypatch):
 
     X_dummy = np.random.rand(10, 5)
 
-    entrenamiento(X_dummy,3,42)
+    entrenamiento(X_dummy,3,42,scaler_global)
 
     ruta_modelo = tmp_path / "modelos" / "kmeans_spotify_model.pkl"
     assert ruta_modelo.exists(), "No se ha guardado el modelo entrenado"
@@ -76,7 +79,8 @@ def test_cargar_datos_ruta_num_filas_correctas(tmp_path, monkeypatch):
     _crear_parquets_dummy(Path(tmp_path))
 
     iniciar_logger()
-    X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
+    X_train_scaled, X_test_scaled,scaler = Cargar_Datos_Ruta()
+    scaler_global = scaler
 
     assert X_train_scaled.shape[0] == 3
     assert X_test_scaled.shape[0] == 3
@@ -90,7 +94,7 @@ def test_entrenamiento_crea_directorio_modelos(tmp_path, monkeypatch):
     iniciar_logger()
 
     X_dummy = np.random.rand(5, 5)
-    entrenamiento(X_dummy,3,42)
+    entrenamiento(X_dummy,3,42,scaler_global)
 
     modelos_dir = Path(tmp_path) / "modelos"
     assert modelos_dir.is_dir(), "No se ha creado el directorio 'modelos'"
@@ -104,7 +108,7 @@ def test_cargar_datos_ruta_estandariza_features(tmp_path, monkeypatch):
     _crear_parquets_dummy(Path(tmp_path))
 
     iniciar_logger()
-    X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
+    X_train_scaled, X_test_scaled,scaler = Cargar_Datos_Ruta()
 
     medias = X_train_scaled.mean(axis=0)
     desvios = X_train_scaled.std(axis=0)
@@ -122,7 +126,7 @@ def test_modelo_guardado_es_kmeans(tmp_path, monkeypatch):
     iniciar_logger()
 
     X_dummy = np.random.rand(20, 5)
-    entrenamiento(X_dummy,2,42)
+    entrenamiento(X_dummy,2,42,scaler_global)
 
     ruta_modelo = Path(tmp_path) / "modelos" / "kmeans_spotify_model.pkl"
     modelo = joblib.load(ruta_modelo)

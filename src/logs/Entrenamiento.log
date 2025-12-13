@@ -95,3 +95,7 @@
 2025-12-13 00:19:58,177 - INFO - Ejecución simple de prueba (K=4):
 2025-12-13 00:20:02,099 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
 2025-12-13 00:20:02,107 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-13 11:07:42,304 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-13 11:07:42,305 - INFO - Ejecución simple de prueba (K=4):
+2025-12-13 11:07:46,281 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-13 11:07:46,288 - INFO - WCSS: 2158.50, Silhouette: 0.2656

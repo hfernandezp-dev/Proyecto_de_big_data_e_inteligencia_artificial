@@ -1,0 +1,18 @@
+2025-12-13 10:54:24,789 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'YOUNGBLOOD HARDSTYLE', 'artist_name': 'SICK LEGEND'}, {'track_name': 'Te esperaré toda la vida', 'artist_name': 'Dani Fernández'}, {'track_name': 'Já Chegou o Espírito Santo (Ao Vivo)', 'artist_name': 'Ministério Alelluia'}, {'track_name': 'Paixao', 'artist_name': 'Cacau Com Leite'}, {'track_name': '\u5929\u5730\u4e0d\u5bb9 - \u5287\u96c6 "\u6bad" \u7247\u5c3e\u66f2', 'artist_name': 'Hubert Wu'}] 
+ correctamente para el cluster 1
+2025-12-13 10:55:21,816 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'YOUNGBLOOD HARDSTYLE', 'artist_name': 'SICK LEGEND'}, {'track_name': 'Te esperaré toda la vida', 'artist_name': 'Dani Fernández'}, {'track_name': 'Já Chegou o Espírito Santo (Ao Vivo)', 'artist_name': 'Ministério Alelluia'}, {'track_name': 'Paixao', 'artist_name': 'Cacau Com Leite'}, {'track_name': '\u5929\u5730\u4e0d\u5bb9 - \u5287\u96c6 "\u6bad" \u7247\u5c3e\u66f2', 'artist_name': 'Hubert Wu'}] 
+ correctamente para el cluster 1
+2025-12-13 10:55:48,799 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'YOUNGBLOOD HARDSTYLE', 'artist_name': 'SICK LEGEND'}, {'track_name': 'Te esperaré toda la vida', 'artist_name': 'Dani Fernández'}, {'track_name': 'Já Chegou o Espírito Santo (Ao Vivo)', 'artist_name': 'Ministério Alelluia'}, {'track_name': 'Paixao', 'artist_name': 'Cacau Com Leite'}, {'track_name': '\u5929\u5730\u4e0d\u5bb9 - \u5287\u96c6 "\u6bad" \u7247\u5c3e\u66f2', 'artist_name': 'Hubert Wu'}] 
+ correctamente para el cluster 1
+2025-12-13 10:56:37,014 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Fire Eater (Live)', 'artist_name': 'The New Mastersounds'}, {'track_name': 'Masqualero', 'artist_name': 'Sunny Jain'}, {'track_name': 'Spring Tiger', 'artist_name': 'Guided By Voices'}, {'track_name': 'Tunguska', 'artist_name': 'Darkest Hour'}, {'track_name': 'For the Other Self Who Is Far Away That I Can Not Reach', 'artist_name': 'Susumu Yokota'}] 
+ correctamente para el cluster 2
+2025-12-13 11:08:33,660 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'YOUNGBLOOD HARDSTYLE', 'artist_name': 'SICK LEGEND'}, {'track_name': 'Te esperaré toda la vida', 'artist_name': 'Dani Fernández'}, {'track_name': 'Já Chegou o Espírito Santo (Ao Vivo)', 'artist_name': 'Ministério Alelluia'}, {'track_name': 'Paixao', 'artist_name': 'Cacau Com Leite'}, {'track_name': '\u5929\u5730\u4e0d\u5bb9 - \u5287\u96c6 "\u6bad" \u7247\u5c3e\u66f2', 'artist_name': 'Hubert Wu'}] 
+ correctamente para el cluster 1
+2025-12-13 11:08:53,678 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Fire Eater (Live)', 'artist_name': 'The New Mastersounds'}, {'track_name': 'Masqualero', 'artist_name': 'Sunny Jain'}, {'track_name': 'Spring Tiger', 'artist_name': 'Guided By Voices'}, {'track_name': 'Tunguska', 'artist_name': 'Darkest Hour'}, {'track_name': 'For the Other Self Who Is Far Away That I Can Not Reach', 'artist_name': 'Susumu Yokota'}] 
+ correctamente para el cluster 2

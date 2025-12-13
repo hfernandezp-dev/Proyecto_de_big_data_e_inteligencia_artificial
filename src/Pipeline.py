@@ -39,7 +39,11 @@ def iniciar_spark():
 def limpieza_datos():
    spark=iniciar_spark()
    try:
-       df_spotify = spark.read.csv('datasets/spotify_data.csv', header=True)
+       df_spotify = (spark.read
+                     .option("header",True)
+                     .option("mode","DROPMALFORMED")
+                     .option("multiLine", False)
+                     .csv('datasets/spotify_data.csv', header=True))
        df_spotify = df_spotify.drop('_c0')
        df_spotify=df_spotify.na.drop()
        #---------------------------------------------
@@ -58,7 +62,8 @@ def limpieza_datos():
        df_spotify = df_spotify.withColumn('tempo', f.col('tempo').cast("Double"))
        df_spotify = df_spotify.filter((f.col('tempo') >= 40) & (f.col('tempo') <= 250))
        logging.info("Se ha limpiado el dataset de Spotify correctamente")
-       df_spotify=df_spotify.limit(1000)
+       df_spotify=df_spotify.limit(2000)
+       df_spotify.to_csv("datasets/spotify_data.csv", index=False)
        return df_spotify.toPandas()
 
    except Exception as e:
