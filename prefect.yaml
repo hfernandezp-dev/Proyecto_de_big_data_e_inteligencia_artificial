@@ -1,0 +1,40 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: Proyecto_de_big_data_e_inteligencia_artificial
+prefect-version: 3.6.6
+
+# build section allows you to manage and build docker images
+build: null
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push: null
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.git_clone:
+    repository: local
+    branch: fase_3
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name: cada-5-minutos
+  version: null
+  tags: []
+  concurrency_limit: null
+  description: null
+  entrypoint: src/flows/spotify_flow.py:spotify_pipeline_scripts
+  parameters:
+    execution_date: '{{ now }}'
+    retrain: true
+    refresh_data: true
+  work_pool:
+    name: local-pool
+    work_queue_name: null
+    job_variables: {}
+  schedules:
+  - cron: '*/05 * * * *'
+    timezone: null
+    day_or: true

@@ -99,3 +99,23 @@
 2025-12-13 11:07:42,305 - INFO - Ejecución simple de prueba (K=4):
 2025-12-13 11:07:46,281 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
 2025-12-13 11:07:46,288 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-17 21:23:14,677 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-17 21:23:14,677 - INFO - Ejecución simple de prueba (K=4):
+2025-12-17 21:23:19,209 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-17 21:23:19,216 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-17 21:25:18,527 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-17 21:25:18,527 - INFO - Ejecución simple de prueba (K=4):
+2025-12-17 21:25:23,188 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-17 21:25:23,196 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-17 21:27:35,942 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-17 21:27:35,942 - INFO - Ejecución simple de prueba (K=4):
+2025-12-17 21:27:40,634 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-17 21:27:40,642 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-17 21:30:08,974 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-17 21:30:08,975 - INFO - Ejecución simple de prueba (K=4):
+2025-12-17 21:30:13,590 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-17 21:30:13,597 - INFO - WCSS: 2158.50, Silhouette: 0.2656
+2025-12-18 10:53:59,846 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-18 10:53:59,846 - INFO - Ejecución simple de prueba (K=4):
+2025-12-18 10:54:04,608 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-18 10:54:04,616 - INFO - WCSS: 2158.50, Silhouette: 0.2656
