@@ -1,6 +1,7 @@
 from prefect import flow, task, get_run_logger
 import subprocess
 import sys
+import os
 from pathlib import Path
 
 
@@ -21,23 +22,21 @@ PIPELINE_SCRIPT = PROJECT_ROOT / "src" / "Pipeline.py"
 TRAINING_SCRIPT = PROJECT_ROOT / "src" / "Entrenamiento.py"
 
 
-@task(name="Ejecutar Pipeline de Datos", retries=2, retry_delay_seconds=10)
 def run_pipeline_script():
-    logger = get_run_logger()
-    logger.info(f"Ejecutando {PIPELINE_SCRIPT}")
+    base_dir = Path(os.getenv("SPOTIFY_ARTIFACTS_DIR", "C:/prefect_artifacts/spotify"))
 
-    result = subprocess.run(
-        [sys.executable, str(PIPELINE_SCRIPT)],
-        cwd=str(PIPELINE_SCRIPT.parent),
-        capture_output=True,
-        text=True
-    )
+    cmd = [
+        "python",
+        "src/Pipeline.py",
+        "--base-dir", str(base_dir),
+        "--input-csv", str(base_dir / "raw/spotify_data.csv"),
+        "--output-clean-csv", "datasets/spotify_data_clean.csv",
+        "--sample-size", "2000",
+        "--test-size", "0.2",
+        "--random-state", "42",
+    ]
 
-    logger.info(result.stdout)
-
-    if result.returncode != 0:
-        logger.error(result.stderr)
-        raise RuntimeError("Falló Pipeline.py")
+    subprocess.run(cmd, check=True)
 
 
 @task(name="Ejecutar Entrenamiento")
