@@ -11,3 +11,7 @@
 2025-12-20 12:08:14,419 - INFO - Ejecución simple de prueba (K=4):
 2025-12-20 12:08:19,068 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
 2025-12-20 12:08:19,102 - INFO - WCSS: 4218.90, Silhouette: 0.2731
+2025-12-20 16:48:56,077 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-20 16:48:56,077 - INFO - Ejecución simple de prueba (K=4):
+2025-12-20 16:49:01,581 - INFO - Modelo K-Means guardado en: C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\modelos
+2025-12-20 16:49:01,617 - INFO - WCSS: 4218.90, Silhouette: 0.2731
