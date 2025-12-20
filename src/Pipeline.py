@@ -63,8 +63,11 @@ def limpieza_datos():
        df_spotify = df_spotify.filter((f.col('tempo') >= 40) & (f.col('tempo') <= 250))
        logging.info("Se ha limpiado el dataset de Spotify correctamente")
        df_spotify=df_spotify.limit(2000)
-       df_spotify.to_csv("datasets/spotify_data.csv", index=False)
-       return df_spotify.toPandas()
+       df_pandas = df_spotify.toPandas()
+       ruta_base = os.path.dirname(os.path.abspath(__file__))
+       ruta_csv = os.path.join(ruta_base, "datasets", "spotify_data.csv")
+       df_pandas.to_csv(ruta_csv, index=False)
+       return df_pandas
 
    except Exception as e:
        logging.error(f"Error en la limpieza de datos:\n {e}")
