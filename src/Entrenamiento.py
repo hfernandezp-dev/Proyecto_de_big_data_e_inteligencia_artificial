@@ -1,87 +1,71 @@
-import logging
+# src/Entrenamiento.py
 import os
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
+import argparse
+import logging
 import pandas as pd
-import numpy as np
 import joblib
 import time
-def iniciar_logger():
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
 
-    log_dir = "logs"
-    os.makedirs(log_dir, exist_ok=True)
+def iniciar_logger(logs_dir: str):
+    os.makedirs(logs_dir, exist_ok=True)
     logging.basicConfig(
-        filename=os.path.join(log_dir, "Entrenamiento.log"),
+        filename=os.path.join(logs_dir, "Entrenamiento.log"),
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s"
     )
 
+def cargar_datos(input_dir: str):
+    X_train = pd.read_parquet(os.path.join(input_dir, "X_train.parquet"))
+    X_test = pd.read_parquet(os.path.join(input_dir, "X_test.parquet"))
 
-def Cargar_Datos_Ruta():
-    try:
-        X_train = pd.read_parquet('datasets/X_train.parquet')
-        X_test = pd.read_parquet('datasets/X_test.parquet')
-        # y_train = pd.read_parquet('datasets/y_train.parquet')
-        # y_test = pd.read_parquet('datasets/y_test.parquet')
-        COLS_TEXTO = ['artist_name', 'track_name', 'track_id', 'genre']
-        cols_a_eliminar = [c for c in COLS_TEXTO if c in X_train.columns]
+    cols_texto = ["artist_name", "track_name", "track_id", "genre"]
+    X_train.drop(columns=[c for c in cols_texto if c in X_train], inplace=True)
+    X_test.drop(columns=[c for c in cols_texto if c in X_test], inplace=True)
 
-        X_train.drop(columns=cols_a_eliminar, inplace=True)
-        X_test.drop(columns=cols_a_eliminar, inplace=True)
-        clust_feats = ['instrumentalness', 'speechiness', 'danceability', 'valence', 'tempo']
-        X_train= X_train[clust_feats]
-        X_test= X_test[clust_feats]
-        scaler = StandardScaler()
-        X_train_scaled = scaler.fit_transform(X_train)
-        X_test_scaled = scaler.transform(X_test)
-        logging.info("Datos de entrenamiento y prueba cargados y escalados correctamente")
+    feats = ["instrumentalness", "speechiness", "danceability", "valence", "tempo"]
+    X_train = X_train[feats]
+    X_test = X_test[feats]
 
-        return X_train_scaled, X_test_scaled,scaler
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
 
-    except Exception as e:
-        logging.error(f"Error en la carga de datos de entrenamiento y prueba: {e}")
+    return X_train_scaled, scaler
 
+def entrenar(x_train, scaler, output_dir: str, k: int, random_state: int):
+    os.makedirs(output_dir, exist_ok=True)
 
-def entrenamiento(x_train,k,random_state,scaler):
-    try:
-        tiempo_inicio = time.time()
+    inicio = time.time()
 
+    model = KMeans(n_clusters=k, random_state=random_state, n_init=10)
+    model.fit(x_train)
 
-        kmeans = KMeans(n_clusters=k, random_state=random_state, n_init=10)
-        kmeans.fit(x_train)
-        RUTA_MODELO = 'modelos/'
-        os.makedirs(RUTA_MODELO, exist_ok=True)
-        nombre_modelo = os.path.join(RUTA_MODELO, 'kmeans_spotify_model.pkl')
-        nombre_modelo_scaler = os.path.join(RUTA_MODELO, 'scaler.pkl')
-        joblib.dump(kmeans, nombre_modelo)
-        joblib.dump(scaler, nombre_modelo_scaler)
-        logging.info(f"Modelo K-Means guardado en: {nombre_modelo}")
-        tiempo_fin = time.time()
-        duracion = tiempo_fin - tiempo_inicio
-        score_wcss = kmeans.inertia_
-        score_silueta = silhouette_score(x_train, kmeans.labels_) if k > 1 else 0
-        return {
-            'model': kmeans,
-            'k': k,
-            'wcss': score_wcss,
-            'silhouette': score_silueta,
-            'duration_sec': duracion
-        }
+    joblib.dump(model, os.path.join(output_dir, "kmeans_spotify_model.pkl"))
+    joblib.dump(scaler, os.path.join(output_dir, "scaler.pkl"))
 
+    duracion = time.time() - inicio
+    sil = silhouette_score(x_train, model.labels_) if k > 1 else 0
 
-    except Exception as e:
-        logging.error(f"Error en entrenamiento: {e}")
+    logging.info(
+        f"Modelo entrenado | k={k} | silhouette={sil:.4f} | {duracion:.2f}s"
+    )
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input_dir", required=True)
+    parser.add_argument("--output_dir", required=True)
+    parser.add_argument("--logs_dir", required=True)
+    parser.add_argument("--k", type=int, default=4)
+    parser.add_argument("--random_state", type=int, default=42)
+    args = parser.parse_args()
+
+    iniciar_logger(args.logs_dir)
+
+    x_train, scaler = cargar_datos(args.input_dir)
+    entrenar(x_train, scaler, args.output_dir, args.k, args.random_state)
 
 if __name__ == "__main__":
-    iniciar_logger()
-    x_train, x_test,scaler=Cargar_Datos_Ruta()
-    if x_train is not None:
-        logging.info("Ejecución simple de prueba (K=4):")
-        resultados=entrenamiento(x_train,4,42,scaler)
-        logging.info(f"WCSS: {resultados['wcss']:.2f}, Silhouette: {resultados['silhouette']:.4f}")
-    else:
-        logging.error("No se pudo cargar el set de entrenamiento")
-
+    main()
