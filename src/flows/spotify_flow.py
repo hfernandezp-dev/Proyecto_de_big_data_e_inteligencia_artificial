@@ -30,7 +30,7 @@ def run_pipeline_script():
         "src/Pipeline.py",
         "--base-dir", str(base_dir),
         "--input-csv", str(base_dir / "raw/spotify_data.csv"),
-        "--output-clean-csv", "datasets/spotify_data_clean.csv",
+        "--output-csv", "datasets/spotify_data_clean.csv",
         "--sample-size", "2000",
         "--test-size", "0.2",
         "--random-state", "42",
