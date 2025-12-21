@@ -29,7 +29,7 @@ def run_pipeline_script():
         "python",
         "src/Pipeline.py",
         "--base-dir", str(base_dir),
-        "--input-csv", str(base_dir / "raw/spotify_data.csv"),
+        "--input-csv", str(Path("C:/Users/pimie/Desktop/Desarrollo/TfgSpotify/Proyecto_de_big_data_e_inteligencia_artificial/src/datasets")),
         "--output-csv", "datasets/spotify_data_clean.csv",
         "--sample-size", "2000",
         "--test-size", "0.2",
