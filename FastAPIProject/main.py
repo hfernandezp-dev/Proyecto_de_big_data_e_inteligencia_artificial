@@ -1,4 +1,7 @@
-from fastapi import FastAPI, Header, HTTPException, Depends
+from fastapi import FastAPI, Header, HTTPException,Request,Depends,Security
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import HTTPException as FastAPIHTTPException
+from fastapi.security import APIKeyHeader
 from pathlib import Path
 import pandas as pd
 import os
@@ -24,44 +27,32 @@ app = FastAPI()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MODELOS_DIR = BASE_DIR / "src" / "modelos"
+dataframes_dir = BASE_DIR / "src" / "datasets"
 env_path = BASE_DIR / "environment" / ".env"
 scaler_path = MODELOS_DIR / "scaler.pkl"
 load_dotenv(dotenv_path=env_path)
 
-def creacion_dataset_canciones():
-    try:
-        clust_feats = ['instrumentalness', 'speechiness', 'danceability', 'valence', 'tempo']
-        scaler = joblib.load(scaler_path)
-        csv_path_para_clusterizar = BASE_DIR / "src" / "datasets" / "spotify_data.csv"
-        modelo_path2 = MODELOS_DIR / "kmeans_spotify_model.pkl"
-        df_canciones_para_clusterizar = pd.read_csv(csv_path_para_clusterizar)
-        X = df_canciones_para_clusterizar[clust_feats]
-        X_scaled = scaler.transform(X)
-        kmeans = joblib.load(modelo_path2)
-        df_canciones_para_clusterizar['cluster'] = kmeans.predict(X_scaled)
-        ruta_dataset_clusterizado = 'datasets/'
-        os.makedirs(ruta_dataset_clusterizado, exist_ok=True)
-        if df_canciones_para_clusterizar is not None:
-            logging.info("Se ha creado el dataset de canciones correctamente")
-        df_canciones_para_clusterizar.to_csv("datasets/canciones_clusterizadas.csv", index=False)
-    except Exception as e:
-        logging.error(f"Error en la creacion del dataset de canciones: {e}")
+API_KEY = os.getenv("SPOTIFY_API_KEY")
+api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
 
 
-creacion_dataset_canciones()
 
+
+async def validar_api_key(api_key_header: str = Security(api_key_header)):
+    if api_key_header != API_KEY:
+        raise HTTPException(status_code=401, detail="API Key inválida")
 
 #simula la entrada de datos ya que no se ha desplegado
-@app.get("/obtener_datos_emul")
-async def obtener2_datos_emul(x_api_key: str | None = Header(None, alias="x-api-key")):
+@app.get("/obtener_datos_emul",dependencies=[Depends(validar_api_key)])
+async def obtener2_datos_emul():
     csv_path = BASE_DIR / "src" / "datasets" / "spotify_data.csv"
     app.state.df_usuario = pd.read_csv(csv_path)
     logging.info("se ha obtenido el csv")
     return {"se ha obtenido el csv": f"{csv_path}"}
 
 #emula el envio de datos me imagino que para el dashboard eso ya se tiene que ver
-@app.get("/enviar_datos_emul")
-async def enviar_datos_emul(x_api_key: str | None = Header(None, alias="x-api-key")):
+@app.get("/enviar_datos_emul",dependencies=[Depends(validar_api_key)])
+async def enviar_datos_emul():
     if app.state.df_usuario is None:
         logging.error("Datos no cargados, no se ha ejecutado la obtencion de datos")
         return {"error": "Datos no cargados. Ejecuta primero /obtener_datos_emul"}
@@ -75,12 +66,17 @@ async def enviar_datos_emul(x_api_key: str | None = Header(None, alias="x-api-ke
         return fila_dict
 
 # Endpoint que con la entrada de datos predice una serie de 5 canciones del mismo cluster 
-@app.post("/prediccion")
-async def predecir_popularidad(cancion: CancionEntrada, x_api_key: str | None = Header(None, alias="x-api-key")):
+@app.post("/prediccion"
+    ,summary="Predice una serie de 5 canciones del mismo cluster"
+    ,description="Recibe una canción como entrada y devuelve una lista de 5 canciones del mismo cluster"
+    ,dependencies=[Depends(validar_api_key)])
+async def predecir_popularidad(cancion: CancionEntrada):
 
     try:
+
         scaler_path = MODELOS_DIR / "scaler.pkl"
         modelo_path = MODELOS_DIR / "kmeans_spotify_model.pkl"
+
         csv_path = Path("datasets") / "canciones_clusterizadas.csv"
         scaler = joblib.load(scaler_path)
         modelo = joblib.load(modelo_path)
@@ -88,7 +84,7 @@ async def predecir_popularidad(cancion: CancionEntrada, x_api_key: str | None = 
         df_input = pd.DataFrame([cancion.model_dump()])[clust_feats]
         df_scaled = scaler.transform(df_input)
         cluster = int(modelo.predict(df_scaled)[0])
-        df_canciones = pd.read_csv(csv_path)
+        df_canciones = pd.read_csv(os.path.join(dataframes_dir, "canciones_clusterizadas.csv"))
         df_cluster = df_canciones[df_canciones["cluster"] == cluster]
         recomendaciones = df_cluster.sample(
             n=min(5, len(df_cluster)),
@@ -107,3 +103,18 @@ async def predecir_popularidad(cancion: CancionEntrada, x_api_key: str | None = 
         logging.error(f"Error en el endpoint de prediccion: {e}")
 
 
+@app.exception_handler(FastAPIHTTPException)
+async def http_exception_handler(request: Request, exc: FastAPIHTTPException):
+    logging.error(
+        f"HTTP {exc.status_code} | "
+        f"Path: {request.url.path} | "
+        f"Detail: {exc.detail}"
+    )
+
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail}
+    )
+@app.get("/health")
+def health():
+    return {"status": "ok"}

@@ -53,6 +53,23 @@ def entrenar(x_train, scaler, output_dir: str, k: int, random_state: int):
         f"Modelo entrenado | k={k} | silhouette={sil:.4f} | {duracion:.2f}s"
     )
 
+def creacion_dataset_canciones(input_dir:str,output_dir:str):
+    try:
+        logging.info("Se va a crear el dataset de canciones")
+        clust_feats = ['instrumentalness', 'speechiness', 'danceability', 'valence', 'tempo']
+        scaler=joblib.load(os.path.join(output_dir,"scaler.pkl"))
+        dataframe_original=pd.read_csv(os.path.join(input_dir,"spotify_data.csv"))
+        x=dataframe_original[clust_feats]
+        x_scaler=scaler.transform(x)
+        kmeans = joblib.load(os.path.join(output_dir,"kmeans_spotify_model.pkl"))
+        dataframe_original['cluster']=kmeans.predict(x_scaler)
+        dataframe_original.to_csv(os.path.join(input_dir,"canciones_clusterizadas.csv"),index=False)
+        logging.info("Se ha creado el dataset de canciones correctamente")
+    except Exception as e:
+        logging.error(f"Error en la creacion del dataset de canciones: {e}")
+
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_dir", required=True)
@@ -66,6 +83,6 @@ def main():
 
     x_train, scaler = cargar_datos(args.input_dir)
     entrenar(x_train, scaler, args.output_dir, args.k, args.random_state)
-
+    creacion_dataset_canciones(args.input_dir,args.output_dir)
 if __name__ == "__main__":
     main()
