@@ -38,3 +38,4 @@
  [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia'}] 
  correctamente para el cluster 1
 2025-12-22 10:34:50,587 - INFO - se ha obtenido el csv
+2025-12-22 11:32:13,164 - INFO - se ha obtenido el csv
