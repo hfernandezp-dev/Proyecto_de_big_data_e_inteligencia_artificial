@@ -23,3 +23,23 @@
 2025-12-22 09:25:47,384 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.20s
 2025-12-22 09:25:47,385 - INFO - Se va a crear el dataset de canciones
 2025-12-22 09:25:47,411 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:16:29,064 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:16:29,064 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.14s
+2025-12-22 11:16:29,064 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:16:29,089 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:16:54,263 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:16:54,263 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.18s
+2025-12-22 11:16:54,264 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:16:54,294 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:17:03,713 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:17:03,713 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.15s
+2025-12-22 11:17:03,713 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:17:03,736 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:21:16,978 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:21:16,978 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.17s
+2025-12-22 11:21:16,978 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:21:17,003 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:22:16,271 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:22:16,271 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.16s
+2025-12-22 11:22:16,271 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:22:16,299 - INFO - Se ha creado el dataset de canciones correctamente

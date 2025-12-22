@@ -11,9 +11,13 @@ st.title("Panel de Control: Spotify Clustering")
 
 # Definición de rutas (ajustadas a tu estructura de carpetas)
 BASE_DIR = Path(__file__).resolve().parent
-RUTA_METRICAS = BASE_DIR / "modelos" / "metrics_history.json"
+RUTA_METRICAS = BASE_DIR / "modelos" / "historial_metricas.json"
 RUTA_DATASET = BASE_DIR / "datasets" / "canciones_clusterizadas.csv"
 
+
+print(f"BASE_DIR {BASE_DIR}")
+print(f"RUTA_METRICAS {RUTA_METRICAS}")
+print(f"RUTA_DATASET {RUTA_DATASET}")
 # --- VISTA 1: MÉTRICAS DE CALIDAD (Modelo) ---
 st.header("Evolución de Calidad del Modelo")
 
@@ -69,7 +73,7 @@ else:
 st.markdown("---")
 st.header("Auditoría de Eventos (Logs)")
 base_dir_api=Path(__file__).resolve().parent.parent
-RUTA_LOGS = BASE_DIR / "FastAPIProject" / "logs" / "API.log"
+RUTA_LOGS = base_dir_api / "FastAPIProject" / "logs" / "API.log"
 
 if RUTA_LOGS.exists():
     with open(RUTA_LOGS, "r") as f:

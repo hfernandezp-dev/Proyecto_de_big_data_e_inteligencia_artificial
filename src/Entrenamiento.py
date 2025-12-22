@@ -1,11 +1,12 @@
-# src/Entrenamiento.py
 import os
 import argparse
 import logging
 import pandas as pd
 import joblib
 import time
+import json
 from sklearn.preprocessing import StandardScaler
+from datetime import datetime
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
@@ -48,10 +49,41 @@ def entrenar(x_train, scaler, output_dir: str, k: int, random_state: int):
 
     duracion = time.time() - inicio
     sil = silhouette_score(x_train, model.labels_) if k > 1 else 0
-
+    metricas = {"k": k, "silhouette": sil, "wcss": model.inertia_, "duration_sec": duracion}
+    actualizar_historial_metricas(metricas,output_dir)
     logging.info(
         f"Modelo entrenado | k={k} | silhouette={sil:.4f} | {duracion:.2f}s"
     )
+
+
+def actualizar_historial_metricas (nuevas_metricas,output_dir:str):
+
+   try:
+       ruta_historial = os.path.join(output_dir, "historial_metricas.json")
+
+       nuevas_metricas['timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+       datos_a_guardar = {k: v for k, v in nuevas_metricas.items() if k != 'model'}
+
+       historial = []
+       if os.path.exists(ruta_historial):
+           try:
+               with open(ruta_historial, 'r') as f:
+                   historial = json.load(f)
+
+           except:
+               historial = []
+
+       historial.append(datos_a_guardar)
+
+       with open(ruta_historial, 'w') as f:
+           json.dump(historial[-50:], f, indent=4)
+
+       logging.info("Métricas registradas en el historial JSON.")
+   except Exception as e:
+       logging.error(f"Error en la creacion del historial en JSON: {e}")
+
+
 
 def creacion_dataset_canciones(input_dir:str,output_dir:str):
     try:
