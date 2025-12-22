@@ -43,7 +43,10 @@ async def validar_api_key(api_key_header: str = Security(api_key_header)):
         raise HTTPException(status_code=401, detail="API Key inválida")
 
 #simula la entrada de datos ya que no se ha desplegado
-@app.get("/obtener_datos_emul",dependencies=[Depends(validar_api_key)])
+@app.get("/obtener_datos_emul"
+    ,summary="Simula la entrada de datos ya sea para un dashboard o un aplicacion"
+    ,description="Esta ruta simula la entrada de datos ya sea para un dashboard o una aplicacion, para ello se necesita que se hayan obtenido los datos con la ruta /obtener_datos_emul"
+    ,dependencies=[Depends(validar_api_key)])
 async def obtener2_datos_emul():
     csv_path = BASE_DIR / "src" / "datasets" / "spotify_data.csv"
     app.state.df_usuario = pd.read_csv(csv_path)
@@ -51,7 +54,10 @@ async def obtener2_datos_emul():
     return {"se ha obtenido el csv": f"{csv_path}"}
 
 #emula el envio de datos me imagino que para el dashboard eso ya se tiene que ver
-@app.get("/enviar_datos_emul",dependencies=[Depends(validar_api_key)])
+@app.get("/enviar_datos_emul"
+    ,summary="Simula el envio de datos ya sea para un dashboard o un aplicacion"
+    ,description="Esta ruta simula el envio de datos ya sea para un dashboard o una aplicacion, para ello se necesita que se hayan obtenido los datos con la ruta /obtener_datos_emul"
+    ,dependencies=[Depends(validar_api_key)])
 async def enviar_datos_emul():
     if app.state.df_usuario is None:
         logging.error("Datos no cargados, no se ha ejecutado la obtencion de datos")

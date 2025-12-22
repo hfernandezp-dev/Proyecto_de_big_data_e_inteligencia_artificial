@@ -18,3 +18,5 @@ pyarrow
 pytest
 fastapi
 typing
+streamlit
+plotly
