@@ -7,12 +7,15 @@ from pyspark.sql import functions as f
 from sklearn.model_selection import train_test_split
 
 def iniciar_logger(logs_dir: str):
-    os.makedirs(logs_dir, exist_ok=True)
-    logging.basicConfig(
-        filename=os.path.join(logs_dir, "Pipeline.log"),
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s"
-    )
+    try:
+        os.makedirs(logs_dir, exist_ok=True)
+        logging.basicConfig(
+            filename=os.path.join(logs_dir, "Pipeline.log"),
+            level=logging.INFO,
+            format="%(asctime)s - %(levelname)s - %(message)s"
+        )
+    except Exception as e:
+        logging.error(f"Error al iniciar logger: {e}")
 
 def iniciar_spark():
     findspark.init()
