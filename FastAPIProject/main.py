@@ -23,7 +23,13 @@ def iniciar_logger():
 
 iniciar_logger()
 
-app = FastAPI()
+app = FastAPI(
+    title="API de Recomendación Musical",
+    description="API para recomendar canciones usando clustering KMeans",
+    version="0.5.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MODELOS_DIR = BASE_DIR / "src" / "modelos"
