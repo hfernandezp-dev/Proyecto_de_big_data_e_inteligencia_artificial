@@ -17,7 +17,7 @@ for parent in CURRENT_FILE.parents:
         break
 
 if PROJECT_ROOT is None:
-    raise RuntimeError("❌ No se pudo localizar la raíz del proyecto")
+    raise RuntimeError(" No se pudo localizar la raíz del proyecto")
 
 SRC_DIR = PROJECT_ROOT / "src"
 
@@ -36,7 +36,7 @@ LOGS_DIR = SRC_DIR / "logs"
 @task(name="Ejecutar Pipeline de Datos", retries=2, retry_delay_seconds=10)
 def run_pipeline():
     logger = get_run_logger()
-    logger.info(f"🚀 Ejecutando Pipeline: {PIPELINE_SCRIPT}")
+    logger.info(f" Ejecutando Pipeline: {PIPELINE_SCRIPT}")
 
     cmd = [
         sys.executable,
@@ -57,13 +57,13 @@ def run_pipeline():
 
     if result.returncode != 0:
         logger.error(result.stderr)
-        raise RuntimeError("❌ Falló Pipeline.py")
+        raise RuntimeError(" Falló Pipeline.py")
 
 
 @task(name="Ejecutar Entrenamiento", retries=1)
 def run_training():
     logger = get_run_logger()
-    logger.info(f"🧠 Ejecutando Entrenamiento: {TRAINING_SCRIPT}")
+    logger.info(f" Ejecutando Entrenamiento: {TRAINING_SCRIPT}")
 
     cmd = [
         sys.executable,
@@ -85,7 +85,7 @@ def run_training():
 
     if result.returncode != 0:
         logger.error(result.stderr)
-        raise RuntimeError("❌ Falló Entrenamiento.py")
+        raise RuntimeError(" Falló Entrenamiento.py")
 
 
 # =========================
@@ -95,7 +95,7 @@ def run_training():
 @flow(name="spotify_pipeline_flow")
 def spotify_pipeline_flow():
     logger = get_run_logger()
-    logger.info("🎧 Iniciando pipeline Spotify con Prefect")
+    logger.info(" Iniciando pipeline Spotify con Prefect")
 
     run_pipeline()
     run_training()
