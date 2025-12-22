@@ -36,7 +36,7 @@ def cargar_datos(input_dir: str):
 
     return X_train_scaled, scaler
 
-def entrenar(x_train, scaler, output_dir: str, k: int, random_state: int):
+def entrenamiento(x_train, scaler, output_dir: str, k: int, random_state: int):
     os.makedirs(output_dir, exist_ok=True)
 
     inicio = time.time()
@@ -114,7 +114,7 @@ def main():
     iniciar_logger(args.logs_dir)
 
     x_train, scaler = cargar_datos(args.input_dir)
-    entrenar(x_train, scaler, args.output_dir, args.k, args.random_state)
+    entrenamiento(x_train, scaler, args.output_dir, args.k, args.random_state)
     creacion_dataset_canciones(args.input_dir,args.output_dir)
 if __name__ == "__main__":
     main()

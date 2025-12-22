@@ -2,7 +2,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 import logging
-
+import os
+import sys
 import src.Pipeline as pipeline
 from src.Pipeline import (
     iniciar_logger,
@@ -10,6 +11,10 @@ from src.Pipeline import (
     dividir_dataset,
     # limpieza_datos,
 )
+
+base_dir = Path(__file__).parent.parent
+
+loggings_path=os.path.join(base_dir,"src","logs")
 
 
 @pytest.mark.skip(reason="Se omite este test para no arrancar Spark en los tests unitarios.")
@@ -44,7 +49,7 @@ def test_iniciar_spark_devuelve_fake_sesion(monkeypatch):
     import pyspark.sql
     monkeypatch.setattr(pyspark.sql, "SparkSession", type("FakeSparkSession", (), {"builder": FakeBuilder()}))
 
-    iniciar_logger()
+    iniciar_logger(loggings_path)
     spark = iniciar_spark()
 
     assert spark is not None
@@ -66,7 +71,7 @@ def test_iniciar_spark_error_loguea_y_devuelve_none(monkeypatch, caplog):
     import pyspark.sql
     monkeypatch.setattr(pyspark.sql, "SparkSession", _FakeSparkSession)
 
-    pipeline.iniciar_logger()
+    pipeline.iniciar_logger(loggings_path)
 
     with caplog.at_level(logging.ERROR):
         spark = pipeline.iniciar_spark()
@@ -79,7 +84,7 @@ def test_dividir_dataset_crea_parquets(tmp_path, monkeypatch):
     dividir_dataset debe crear los 4 ficheros parquet en la carpeta datasets/.
     """
     monkeypatch.chdir(tmp_path)
-    iniciar_logger()
+    iniciar_logger(tmp_path)
 
     datasets_dir = Path(tmp_path) / "datasets"
     datasets_dir.mkdir(parents=True, exist_ok=True)
@@ -93,7 +98,7 @@ def test_dividir_dataset_crea_parquets(tmp_path, monkeypatch):
         "popularity": [40, 50, 60, 70],
     })
 
-    dividir_dataset(df)
+    dividir_dataset(df,datasets_dir)
 
     assert (datasets_dir / "X_train.parquet").exists()
     assert (datasets_dir / "X_test.parquet").exists()
@@ -107,7 +112,7 @@ def test_dividir_dataset_respeta_columnas(tmp_path, monkeypatch):
     y que y solo contiene esa columna.
     """
     monkeypatch.chdir(tmp_path)
-    iniciar_logger()
+    iniciar_logger(tmp_path)
 
     datasets_dir = Path(tmp_path) / "datasets"
     datasets_dir.mkdir(parents=True, exist_ok=True)
@@ -121,7 +126,7 @@ def test_dividir_dataset_respeta_columnas(tmp_path, monkeypatch):
         "popularity": [40, 50, 60, 70],
     })
 
-    dividir_dataset(df)
+    dividir_dataset(df,datasets_dir)
 
     X_train = pd.read_parquet(datasets_dir / "X_train.parquet")
     y_train = pd.read_parquet(datasets_dir / "y_train.parquet")
@@ -136,7 +141,7 @@ def test_iniciar_logger_no_falla_en_directorio_tmp(tmp_path, monkeypatch):
     en un directorio temporal vacío.
     """
     monkeypatch.chdir(tmp_path)
-    iniciar_logger()
+    iniciar_logger(tmp_path)
 
 
 def test_dividir_dataset_no_modifica_dataframe_original(tmp_path, monkeypatch):
@@ -145,7 +150,7 @@ def test_dividir_dataset_no_modifica_dataframe_original(tmp_path, monkeypatch):
     (mismas filas y mismas columnas).
     """
     monkeypatch.chdir(tmp_path)
-    iniciar_logger()
+    iniciar_logger(tmp_path)
 
     datasets_dir = Path(tmp_path) / "datasets"
     datasets_dir.mkdir(parents=True, exist_ok=True)
@@ -160,26 +165,26 @@ def test_dividir_dataset_no_modifica_dataframe_original(tmp_path, monkeypatch):
     })
 
     df_original = df.copy(deep=True)
-    dividir_dataset(df)
+    dividir_dataset(df,datasets_dir)
     assert df.equals(df_original)
 
 
 def test_dividir_dataset_maneja_errores_sin_explotar(tmp_path, monkeypatch, caplog):
     monkeypatch.chdir(tmp_path)
-    iniciar_logger()
+    iniciar_logger(tmp_path)
+
+    # Falta la columna popularity → fuerza error
     df = pd.DataFrame({
-        "instrumentalness": [0.1, 0.2],
-        "speechiness": [0.05, 0.1],
-        "danceability": [0.6, 0.7],
-        "valence": [0.3, 0.4],
-        "tempo": [110, 120],
-        "popularity": [40, 50],
+        "danceability": [0.6, 0.7]
     })
 
     with caplog.at_level(logging.ERROR):
-        dividir_dataset(df)
-    assert any("Error en la dividir de datos" in rec.getMessage() for rec in caplog.records)
+        dividir_dataset(df, tmp_path)
 
+    assert any(
+        "Error al dividir dataset" in rec.getMessage()
+        for rec in caplog.records
+    )
 class _FakeNA:
     def __init__(self, df):
         self._df = df
@@ -231,7 +236,7 @@ class _FakeSpark:
 
 def test_limpieza_datos_con_fake_spark_ejecuta_sin_crashear(tmp_path, monkeypatch, caplog):
     monkeypatch.chdir(tmp_path)
-    pipeline.iniciar_logger()
+    pipeline.iniciar_logger(tmp_path)
 
     pdf = pd.DataFrame({
         "genre": ["rock", "pop"],
@@ -246,17 +251,17 @@ def test_limpieza_datos_con_fake_spark_ejecuta_sin_crashear(tmp_path, monkeypatc
     monkeypatch.setattr(pipeline, "iniciar_spark", lambda: fake_spark)
 
     with caplog.at_level(logging.ERROR):
-        out = pipeline.limpieza_datos()
+        out = pipeline.limpieza_datos(tmp_path,2000)
         
     assert out is None or isinstance(out, pd.DataFrame)
     assert any(
-        "Error en la limpieza de datos" in rec.getMessage()
+        "Error al limpiar datos" in rec.getMessage()
         for rec in caplog.records
     )
 
 def test_limpieza_datos_si_reader_falla_loguea_error(tmp_path, monkeypatch, caplog):
     monkeypatch.chdir(tmp_path)
-    pipeline.iniciar_logger()
+    pipeline.iniciar_logger(tmp_path)
 
     class _BoomReader:
         def option(self, *a, **k): return self
@@ -268,25 +273,36 @@ def test_limpieza_datos_si_reader_falla_loguea_error(tmp_path, monkeypatch, capl
     monkeypatch.setattr(pipeline, "iniciar_spark", lambda: _BoomSpark())
 
     with caplog.at_level(logging.ERROR):
-        out = pipeline.limpieza_datos()
+        out = pipeline.limpieza_datos(tmp_path,2000)
 
     assert out is None
-    assert any("Error en la limpieza de datos" in r.getMessage() for r in caplog.records)
+    assert any("Error al limpiar datos" in r.getMessage() for r in caplog.records)
 
 def test_main_llama_a_limpieza_y_dividir(monkeypatch):
     llamado = {"limpieza": False, "dividir": False}
 
-    def _fake_limpieza():
+    def _fake_limpieza(input_csv, limit_rows):
         llamado["limpieza"] = True
         return pd.DataFrame({"a": [1], "popularity": [10]})
 
-    def _fake_dividir(df):
+    def _fake_dividir(df, output_dir):
         llamado["dividir"] = True
         assert "popularity" in df.columns
 
-    monkeypatch.setattr(pipeline, "iniciar_logger", lambda: None)
+    monkeypatch.setattr(pipeline, "iniciar_logger", lambda *a, **k: None)
     monkeypatch.setattr(pipeline, "limpieza_datos", _fake_limpieza)
     monkeypatch.setattr(pipeline, "dividir_dataset", _fake_dividir)
+
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "pipeline",
+            "--input_csv", "fake.csv",
+            "--output_dir", "out",
+            "--logs_dir", "logs",
+        ],
+    )
 
     pipeline.main()
 
