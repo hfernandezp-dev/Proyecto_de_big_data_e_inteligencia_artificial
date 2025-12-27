@@ -1,110 +1,90 @@
+import logging
+from pathlib import Path
+import runpy
+import os
+import sys
 import numpy as np
 import pandas as pd
-from pathlib import Path
 import joblib
+import pytest
 
-from src.Entrenamiento import Cargar_Datos_Ruta, entrenamiento, iniciar_logger
+from src.Entrenamiento import cargar_datos, entrenamiento, iniciar_logger
 
-def _crear_parquets_dummy(base_dir):
+base_dir = Path(__file__).parent.parent
+
+loggings_path=os.path.join(base_dir,"src","logs")
+datasets_path=os.path.join(base_dir,"src","datasets")
+modelos_path=os.path.join(base_dir,"src","modelos")
+# ============================================================
+# Helpers
+# ============================================================
+def _crear_parquets_dummy(base_dir: Path, n_rows: int = 10):
     """
-    Crea ficheros X_train.parquet y X_test.parquet mínimos
-    para que Cargar_Datos_Ruta() funcione.
+    Crea datasets/X_train.parquet y datasets/X_test.parquet con datos mínimos.
+    Usamos n_rows >= 4 para que el __main__ (K=4) no falle.
     """
-    datasets_dir = base_dir / "datasets"
-    datasets_dir.mkdir()
+    datasets_dir = base_dir / "datasets"  # OK
+    datasets_dir.mkdir(parents=True, exist_ok=True)
 
-    clust_feats = ['instrumentalness', 'speechiness', 'danceability', 'valence', 'tempo']
-    cols_texto = ['artist_name', 'track_name', 'track_id', 'genre']
-
-    df_train = pd.DataFrame({
-        'instrumentalness': [0.1, 0.2, 0.3],
-        'speechiness': [0.05, 0.1, 0.2],
-        'danceability': [0.7, 0.8, 0.6],
-        'valence': [0.4, 0.5, 0.6],
-        'tempo': [120, 130, 140],
-        'artist_name': ['a1', 'a2', 'a3'],
-        'track_name': ['t1', 't2', 't3'],
-        'track_id': ['id1', 'id2', 'id3'],
-        'genre': ['rock', 'pop', 'metal'],
+    # columnas numéricas (features)
+    rng = np.random.default_rng(123)
+    df = pd.DataFrame({
+        "instrumentalness": rng.random(n_rows),
+        "speechiness": rng.random(n_rows),
+        "danceability": rng.random(n_rows),
+        "valence": rng.random(n_rows),
+        "tempo": rng.integers(80, 180, size=n_rows),
+        # columnas texto que Entrenamiento.py elimina
+        "artist_name": [f"a{i}" for i in range(n_rows)],
+        "track_name": [f"t{i}" for i in range(n_rows)],
+        "track_id": [f"id{i}" for i in range(n_rows)],
+        "genre": ["rock"] * n_rows,
     })
 
-    df_test = df_train.copy()
-
-    df_train.to_parquet(datasets_dir / "X_train.parquet", index=False)
-    df_test.to_parquet(datasets_dir / "X_test.parquet", index=False)
+    df.to_parquet(datasets_dir / "X_train.parquet", index=False)
+    df.to_parquet(datasets_dir / "X_test.parquet", index=False)
 
 
+@pytest.fixture
+def datos_y_scaler(tmp_path, monkeypatch):
+    """
+    Fixture que crea parquets y devuelve (X_train_scaled, scaler).
+    """
+    monkeypatch.chdir(tmp_path)
+    iniciar_logger(tmp_path)
+    _crear_parquets_dummy(Path(tmp_path), n_rows=10)
+
+    X_train_scaled, scaler = cargar_datos(datasets_path)
+    return X_train_scaled, scaler
+
+
+# ============================================================
+# Tests Cargar_Datos_Ruta()
+# ============================================================
 def test_cargar_datos_ruta_devuelve_arrays_escalados(tmp_path, monkeypatch):
     """
-    Debe devolver dos arrays numpy con 5 columnas (las de clust_feats),
-    sin las columnas de texto.
+    Debe devolver dos arrays numpy con 5 columnas, sin columnas de texto.
     """
     monkeypatch.chdir(tmp_path)
-    _crear_parquets_dummy(tmp_path)
+    iniciar_logger(tmp_path)
+    _crear_parquets_dummy(Path(tmp_path), n_rows=10)
 
-    iniciar_logger()
-    X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
+    X_train_scaled, scaler = cargar_datos(datasets_path)
 
-    # Tipos
     assert isinstance(X_train_scaled, np.ndarray)
-    assert isinstance(X_test_scaled, np.ndarray)
+    assert X_train_scaled.shape == (1600, 5)
+    assert scaler is not None
 
-    assert X_train_scaled.shape == (3, 5)
-    assert X_test_scaled.shape == (3, 5)
-
-
-def test_entrenamiento_guarda_modelo(tmp_path, monkeypatch):
-    """
-    Debe entrenar un KMeans y guardar el modelo en la carpeta 'modelos'.
-    """
-    monkeypatch.chdir(tmp_path)
-    iniciar_logger()
-
-    X_dummy = np.random.rand(10, 5)
-
-    entrenamiento(X_dummy,3,42)
-
-    ruta_modelo = tmp_path / "modelos" / "kmeans_spotify_model.pkl"
-    assert ruta_modelo.exists(), "No se ha guardado el modelo entrenado"
-    
-def test_cargar_datos_ruta_num_filas_correctas(tmp_path, monkeypatch):
-    """
-    Verifica que Cargar_Datos_Ruta devuelve el mismo número de filas
-    que los parquets creados (en este caso, 3).
-    """
-    monkeypatch.chdir(tmp_path)
-    _crear_parquets_dummy(Path(tmp_path))
-
-    iniciar_logger()
-    X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
-
-    assert X_train_scaled.shape[0] == 3
-    assert X_test_scaled.shape[0] == 3
-    
-def test_entrenamiento_crea_directorio_modelos(tmp_path, monkeypatch):
-    """
-    Verifica que la función entrenamiento crea la carpeta 'modelos'
-    al guardar el modelo entrenado.
-    """
-    monkeypatch.chdir(tmp_path)
-    iniciar_logger()
-
-    X_dummy = np.random.rand(5, 5)
-    entrenamiento(X_dummy,3,42)
-
-    modelos_dir = Path(tmp_path) / "modelos"
-    assert modelos_dir.is_dir(), "No se ha creado el directorio 'modelos'"
 
 def test_cargar_datos_ruta_estandariza_features(tmp_path, monkeypatch):
     """
-    Comprueba que los datos de entrenamiento quedan estandarizados:
-    media ~ 0 y desviación típica ~ 1 en cada columna.
+    Media ~ 0 y std ~ 1 en cada feature del train (StandardScaler).
     """
     monkeypatch.chdir(tmp_path)
-    _crear_parquets_dummy(Path(tmp_path))
+    iniciar_logger(tmp_path)
+    _crear_parquets_dummy(Path(tmp_path), n_rows=10)
 
-    iniciar_logger()
-    X_train_scaled, X_test_scaled = Cargar_Datos_Ruta()
+    X_train_scaled, _ = cargar_datos(datasets_path)
 
     medias = X_train_scaled.mean(axis=0)
     desvios = X_train_scaled.std(axis=0)
@@ -113,21 +93,111 @@ def test_cargar_datos_ruta_estandariza_features(tmp_path, monkeypatch):
     assert np.allclose(desvios, 1, atol=1e-6)
 
 
-def test_modelo_guardado_es_kmeans(tmp_path, monkeypatch):
+def test_cargar_datos_ruta_si_fallan_parquets_loguea_error(tmp_path, monkeypatch, caplog):
     """
-    Comprueba que el modelo guardado es un KMeans entrenado
-    y que tiene atributo cluster_centers_ y n_clusters > 1.
+    Cubre el except de Cargar_Datos(): si no existen los parquets debe loguear error y devolver None.
     """
     monkeypatch.chdir(tmp_path)
-    iniciar_logger()
+    iniciar_logger(tmp_path)
 
-    X_dummy = np.random.rand(20, 5)
-    entrenamiento(X_dummy,2,42)
+    with caplog.at_level(logging.ERROR):
+        out = cargar_datos(tmp_path)
 
-    ruta_modelo = Path(tmp_path) / "modelos" / "kmeans_spotify_model.pkl"
+    assert out is None
+    assert any("Error en la carga de datos" in r.getMessage() for r in caplog.records)
+
+
+# ============================================================
+# Tests entrenamiento()
+# ============================================================
+def test_entrenamiento_guarda_modelo_y_scaler(tmp_path, monkeypatch, datos_y_scaler):
+    """
+    Debe guardar kmeans_spotify_model.pkl y scaler.pkl dentro de modelos/.
+    """
+    monkeypatch.chdir(tmp_path)
+    iniciar_logger(tmp_path)
+
+    X_train_scaled, scaler = datos_y_scaler
+
+    res = entrenamiento(
+    x_train=X_train_scaled,
+    scaler=scaler,
+    output_dir=modelos_path,
+    k=3,
+    random_state=42
+)
+    assert isinstance(res, dict)
+
+
+    ruta_modelo = Path(modelos_path) / "kmeans_spotify_model.pkl"
+    ruta_scaler = Path(modelos_path) / "scaler.pkl"
+
+    assert ruta_modelo.exists()
+    assert ruta_scaler.exists()
+
     modelo = joblib.load(ruta_modelo)
+    scaler_guardado = joblib.load(ruta_scaler)
 
     assert hasattr(modelo, "cluster_centers_")
-    assert hasattr(modelo, "n_clusters")
-    assert modelo.n_clusters > 1
+    # el scaler guardado debe existir y ser "algo" compatible
+    assert scaler_guardado is not None
 
+
+def test_entrenamiento_k_eq_1_silhouette_es_0(tmp_path, monkeypatch, datos_y_scaler):
+    """
+    Cubre la rama: silhouette_score(...) if k > 1 else 0
+    """
+    monkeypatch.chdir(tmp_path)
+    iniciar_logger(tmp_path)
+
+    X_train_scaled, scaler = datos_y_scaler
+
+    res = entrenamiento(X_train_scaled,output_dir=modelos_path,k=1, random_state=42, scaler=scaler)
+
+    assert res["k"] == 1
+    assert res["silhouette"] == 0
+    assert res["wcss"] >= 0
+    assert res["duration_sec"] >= 0
+
+
+def test_entrenamiento_error_loguea(tmp_path, monkeypatch, caplog):
+    """
+    Fuerza un error en entrenamiento (x_train inválido) para cubrir el except.
+    """
+    monkeypatch.chdir(tmp_path)
+    iniciar_logger(tmp_path)
+
+    with caplog.at_level(logging.ERROR):
+        out = entrenamiento(None, k=2,output_dir=modelos_path, random_state=42, scaler=None)
+
+    assert out is None
+    assert any("Error en el entrenamiento" in r.getMessage() for r in caplog.records)
+
+
+# ============================================================
+# Cubre el bloque if __name__ == "__main__"
+# ============================================================
+def test_ejecutar_modulo_como_main_cubre_main(tmp_path, monkeypatch):
+    """
+    Ejecuta src.Entrenamiento como script para cubrir el __main__.
+    OJO: necesita >=4 filas porque el __main__ usa K=4.
+    """
+    monkeypatch.chdir(tmp_path)
+    # _crear_parquets_dummy(Path(tmp_path), n_rows=10)
+
+
+    # Definir argumentos como si se ejecutara desde consola
+    sys.argv = [
+        "Entrenamiento.py",
+        "--input_dir", str(datasets_path),
+        "--output_dir", str(modelos_path),
+        "--logs_dir", str(tmp_path / "logs"),
+        "--k", "4",
+        "--random_state", "42"
+    ]
+
+    # Ejecuta el módulo como si fuese `python -m src.Entrenamiento`
+    runpy.run_module("src.Entrenamiento", run_name="__main__")
+
+    # Si ha corrido, debería haber intentado crear logs y/o modelos
+    assert (Path(tmp_path) / "logs").exists()

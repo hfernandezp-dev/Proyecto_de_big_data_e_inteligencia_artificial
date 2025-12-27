@@ -1,48 +1,65 @@
-2025-11-17 18:16:50,603 - ERROR - Error en la carga de datos de entrenamiento y prueba: could not convert string to float: 'Basement Jaxx'
-2025-11-17 18:36:08,942 - ERROR - Error en la carga de datos de entrenamiento y prueba: could not convert string to float: 'Basement Jaxx'
-2025-11-17 18:41:54,249 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:44:55,501 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:46:18,871 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:46:23,092 - INFO - entrenamiento de kmeans: KMeans(n_clusters=4, n_init=10, random_state=42)
-2025-11-17 18:47:11,986 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:50:23,160 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:50:27,265 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.12048565119767442
-2025-11-17 18:54:07,141 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:54:11,036 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.26559320751616505
-2025-11-17 18:59:09,756 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 18:59:13,539 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
-2025-11-17 18:59:57,318 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 19:00:01,211 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.21997066939823018
-2025-11-17 19:03:07,614 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 19:03:11,442 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
-2025-11-17 19:03:11,442 - INFO -   - WCSS (Inercia): 2549.32
-2025-11-17 19:07:25,428 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-17 19:07:29,223 - INFO - Modelo KMeans entrenado correctamente con silhouette score: 0.25751300471880467
-2025-11-17 19:07:29,223 - INFO -   - WCSS (Inercia): 2549.32
-2025-11-17 19:07:29,225 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
-2025-11-19 14:02:22,744 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:02:22,744 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:02:22,744 - ERROR - Error en entrenamiento: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
-2025-11-19 14:24:25,654 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:24:28,780 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:24:31,060 - ERROR - Error en entrenamiento: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
-2025-11-19 14:26:29,143 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:26:38,148 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:26:50,577 - INFO - WCSS: 2549.32, Silhouette: 0.2575
-2025-11-19 14:26:50,580 - INFO - Modelo K-Means guardado en: modelos/
-2025-11-19 14:27:13,908 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:27:13,908 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:27:17,778 - INFO - WCSS: 2549.32, Silhouette: 0.2575
-2025-11-19 14:27:17,779 - INFO - Modelo K-Means guardado en: modelos/
-2025-11-19 14:30:01,892 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:30:01,892 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:30:05,998 - INFO - WCSS: 2549.32, Silhouette: 0.2575
-2025-11-19 14:30:05,999 - INFO - Modelo K-Means guardado en: modelos/
-2025-11-19 14:34:02,915 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:34:02,916 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:34:06,907 - INFO - WCSS: 2549.32, Silhouette: 0.2575
-2025-11-19 14:34:06,908 - INFO - Modelo K-Means guardado en: modelos/
-2025-11-19 14:40:10,911 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
-2025-11-19 14:40:10,911 - INFO - Ejecución simple de prueba (K=3):
-2025-11-19 14:40:14,791 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
-2025-11-19 14:40:14,800 - INFO - WCSS: 2549.32, Silhouette: 0.2575
+2025-12-20 10:58:29,734 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-20 10:58:29,734 - INFO - Ejecución simple de prueba (K=4):
+2025-12-20 10:58:34,363 - INFO - Modelo K-Means guardado en: C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\modelos\kmeans_spotify_model.pkl
+2025-12-20 10:58:34,396 - INFO - WCSS: 4218.90, Silhouette: 0.2731
+2025-12-20 11:42:38,946 - INFO - Buscando datasets en: C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\datasets
+2025-12-20 11:42:39,045 - INFO - Datos cargados y escalados correctamente
+2025-12-20 11:42:39,045 - INFO - Ejecución simple de prueba (K=4):
+2025-12-20 11:42:43,587 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-20 11:42:43,619 - INFO - WCSS: 4218.90, Silhouette: 0.2731
+2025-12-20 12:08:14,419 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-20 12:08:14,419 - INFO - Ejecución simple de prueba (K=4):
+2025-12-20 12:08:19,068 - INFO - Modelo K-Means guardado en: modelos/kmeans_spotify_model.pkl
+2025-12-20 12:08:19,102 - INFO - WCSS: 4218.90, Silhouette: 0.2731
+2025-12-20 16:48:56,077 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-20 16:48:56,077 - INFO - Ejecución simple de prueba (K=4):
+2025-12-20 16:49:01,581 - INFO - Modelo K-Means guardado en: C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\modelos
+2025-12-20 16:49:01,617 - INFO - WCSS: 4218.90, Silhouette: 0.2731
+2025-12-21 19:06:12,429 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.22s
+2025-12-21 19:06:30,148 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.08s
+2025-12-21 19:08:12,793 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.44s
+2025-12-22 09:24:42,290 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.18s
+2025-12-22 09:25:25,038 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.19s
+2025-12-22 09:25:47,384 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.20s
+2025-12-22 09:25:47,385 - INFO - Se va a crear el dataset de canciones
+2025-12-22 09:25:47,411 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:16:29,064 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:16:29,064 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.14s
+2025-12-22 11:16:29,064 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:16:29,089 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:16:54,263 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:16:54,263 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.18s
+2025-12-22 11:16:54,264 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:16:54,294 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:17:03,713 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:17:03,713 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.15s
+2025-12-22 11:17:03,713 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:17:03,736 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:21:16,978 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:21:16,978 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.17s
+2025-12-22 11:21:16,978 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:21:17,003 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:22:16,271 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:22:16,271 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.16s
+2025-12-22 11:22:16,271 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:22:16,299 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 11:31:27,417 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 11:31:27,417 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.80s
+2025-12-22 11:31:27,417 - INFO - Se va a crear el dataset de canciones
+2025-12-22 11:31:27,448 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 13:04:40,862 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 13:04:40,862 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.18s
+2025-12-22 13:04:40,862 - INFO - Se va a crear el dataset de canciones
+2025-12-22 13:04:40,889 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 18:13:09,906 - INFO - Logger iniciado correctamente
+2025-12-22 18:13:10,000 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-22 18:13:12,293 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 18:13:12,293 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 2.24s
+2025-12-22 18:13:12,294 - INFO - Se va a crear el dataset de canciones
+2025-12-22 18:13:12,340 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-22 18:57:16,744 - INFO - Logger iniciado correctamente
+2025-12-22 18:57:16,946 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-22 18:57:21,733 - INFO - Métricas registradas en el historial JSON.
+2025-12-22 18:57:21,733 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.75s
+2025-12-22 18:57:21,733 - INFO - Se va a crear el dataset de canciones
+2025-12-22 18:57:21,772 - INFO - Se ha creado el dataset de canciones correctamente
