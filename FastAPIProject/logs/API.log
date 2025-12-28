@@ -39,3 +39,5 @@
  correctamente para el cluster 1
 2025-12-22 10:34:50,587 - INFO - se ha obtenido el csv
 2025-12-22 11:32:13,164 - INFO - se ha obtenido el csv
+2025-12-28 14:22:14,748 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-28 14:34:01,829 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}

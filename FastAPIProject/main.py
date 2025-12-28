@@ -2,9 +2,14 @@ from fastapi import FastAPI, Header, HTTPException,Request,Depends,Security
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException as FastAPIHTTPException
 from fastapi.security import APIKeyHeader
+from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
+
 from pathlib import Path
 import pandas as pd
+import requests
 import os
+import base64
 from dotenv import load_dotenv
 import joblib
 from schemas import CancionEntrada
@@ -23,12 +28,25 @@ def iniciar_logger():
 
 iniciar_logger()
 
+origins = [
+    "http://192.168.1.40:5500",
+    "http://localhost:5500"
+]
+
+
 app = FastAPI(
     title="API de Recomendación Musical",
     description="API para recomendar canciones usando clustering KMeans",
     version="0.5.0",
     docs_url="/docs",
     redoc_url="/redoc"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,      # o ["*"] para permitir todos
+    allow_credentials=True,
+    allow_methods=["*"],        # GET, POST, etc.
+    allow_headers=["*"],
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,12 +59,98 @@ load_dotenv(dotenv_path=env_path)
 API_KEY = os.getenv("SPOTIFY_API_KEY")
 api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
 
+REDIRECT_URI = "https://127.0.0.1/callback"
+CLIENT_ID = "9ac071fd07fd47768bcdbbc5f2fa3566"
+CLIENT_SECRET = "c82569bd56d249ada2aa9d72ab0a8ee9"
+access_tokens = {}
 
+@app.get("/login")
+def login():
+    scope = "user-read-recently-played"
+    url = (
+        "https://accounts.spotify.com/authorize"
+        f"?client_id={CLIENT_ID}"
+        "&response_type=code"
+        f"&redirect_uri={REDIRECT_URI}"
+        f"&scope={scope}"
+    )
+    return RedirectResponse(url)
+
+
+
+@app.get("/callback")
+def callback(code: str):
+    token_url = "https://accounts.spotify.com/api/token"
+    data = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": REDIRECT_URI,
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET
+    }
+    r = requests.post(token_url, data=data)
+    if r.status_code != 200:
+        raise HTTPException(status_code=r.status_code, detail=r.text)
+
+    tokens = r.json()
+    access_token = tokens["access_token"]
+    refresh_token = tokens.get("refresh_token")
+
+    # Guardamos el access_token temporalmente
+    access_tokens["user"] = access_token
+
+    return {"message": "Login exitoso", "access_token": access_token, "refresh_token": refresh_token}
+
+
+
+
+def get_spotify_token():
+    """
+    Obtiene un token temporal de Spotify usando Client Credentials
+    """
+    auth_str = f"{CLIENT_ID}:{CLIENT_SECRET}"
+    b64_auth_str = base64.b64encode(auth_str.encode()).decode()
+
+    response = requests.post(
+        "https://accounts.spotify.com/api/token",
+        headers={"Authorization": f"Basic {b64_auth_str}"},
+        data={"grant_type": "client_credentials"}
+    )
+    return response.json()["access_token"]
 
 
 async def validar_api_key(api_key_header: str = Security(api_key_header)):
     if api_key_header != API_KEY:
         raise HTTPException(status_code=401, detail="API Key inválida")
+@app.get("/api/recent-tracks")
+def get_recent_tracks(access_token: str):
+    url = "https://api.spotify.com/v1/me/player/recently-played?limit=50"
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    r = requests.get(url, headers=headers)
+    if r.status_code == 200:
+        data = r.json()
+        tracks = []
+        for item in data["items"]:
+            track = item["track"]
+            tracks.append({
+                "name": track["name"],
+                "artists": [a["name"] for a in track["artists"]],
+                "album": track["album"]["name"],
+                "played_at": item["played_at"],
+                "image": track["album"]["images"][0]["url"] if track["album"]["images"] else None
+            })
+        return tracks
+    else:
+        raise HTTPException(status_code=r.status_code, detail=r.text)
+
+
+
+
+
+
+
+
 
 #simula la entrada de datos ya que no se ha desplegado
 @app.get("/obtener_datos_emul"
