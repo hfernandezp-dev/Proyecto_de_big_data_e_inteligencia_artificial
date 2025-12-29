@@ -15,7 +15,7 @@ import os
 import base64
 from dotenv import load_dotenv
 import joblib
-from .schemas import CancionEntrada
+from schemas import CancionEntrada
 import logging
 
 
@@ -34,9 +34,10 @@ iniciar_logger()
 origins = [
     "http://localhost:4200",
     "http://localhost:5500",
-    "http://localhost:8080"
+    "http://localhost:8080",
     "http://192.168.1.40:5500",
-    "http://localhost:5500"
+    "http://localhost:5500",
+    "http://localhost:63342"
 ]
 
 
@@ -49,9 +50,9 @@ app = FastAPI(
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,      # o ["*"] para permitir todos
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],        # GET, POST, etc.
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -148,9 +149,11 @@ def get_recent_tracks(access_token: str):
         tracks = []
         for item in data["items"]:
             track = item["track"]
+            artist_id = track["artists"][0]["id"] if track["artists"] else None
             tracks.append({
                 "name": track["name"],
                 "artists": [a["name"] for a in track["artists"]],
+                "artist_id": artist_id,
                 "album": track["album"]["name"],
                 "played_at": item["played_at"],
                 "image": track["album"]["images"][0]["url"] if track["album"]["images"] else None
@@ -161,9 +164,29 @@ def get_recent_tracks(access_token: str):
 
 
 
+@app.get("/api/generos")
+async def get_generos(ids:str,access_token: str):
+    artist_ids_list = ids.split(',')
+    if(len(artist_ids_list)>50):
+        raise HTTPException(status_code=400, detail="spotify solo permite 50 id")
 
-
-
+    url = "https://api.spotify.com/v1/artists"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    params = {
+        "ids": ids
+    }
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as e:
+        status_code = e.response.status_code
+        detail = e.response.json().get("error", {"message": "Error desconocido de Spotify"}).get("message")
+        raise HTTPException(status_code=status_code, detail=f"Error al obtener artistas de Spotify: {detail}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")
 
 
 
