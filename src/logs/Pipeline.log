@@ -23,3 +23,23 @@
 2025-12-22 18:57:11,755 - INFO - División del dataset realizada correctamente em C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\datasets
 2025-12-22 18:57:11,756 - INFO - Pipeline finalizado correctamente
 2025-12-22 18:57:11,787 - INFO - Closing down clientserver connection
+2025-12-28 18:39:33,245 - INFO - Iniciando pipeline de datos
+2025-12-28 18:39:50,146 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-28 18:39:51,052 - INFO - División del dataset realizada correctamente em C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\datasets
+2025-12-28 18:39:51,052 - INFO - Pipeline finalizado correctamente
+2025-12-28 18:39:51,090 - INFO - Closing down clientserver connection
+2025-12-28 18:41:28,765 - INFO - Iniciando pipeline de datos
+2025-12-28 18:41:40,368 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-28 18:41:41,099 - INFO - División del dataset realizada correctamente em C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\datasets
+2025-12-28 18:41:41,100 - INFO - Pipeline finalizado correctamente
+2025-12-28 18:41:41,127 - INFO - Closing down clientserver connection
+2025-12-28 18:47:45,047 - INFO - Iniciando pipeline de datos
+2025-12-28 18:47:55,571 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-28 18:47:56,096 - INFO - División del dataset realizada correctamente em C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\datasets
+2025-12-28 18:47:56,097 - INFO - Pipeline finalizado correctamente
+2025-12-28 18:47:56,123 - INFO - Closing down clientserver connection
+2025-12-28 18:48:15,444 - INFO - Iniciando pipeline de datos
+2025-12-28 18:48:26,875 - INFO - Se ha limpiado el dataset de Spotify correctamente
+2025-12-28 18:48:27,610 - INFO - División del dataset realizada correctamente em C:\Users\pimie\Desktop\Desarrollo\TfgSpotify\Proyecto_de_big_data_e_inteligencia_artificial\src\datasets
+2025-12-28 18:48:27,611 - INFO - Pipeline finalizado correctamente
+2025-12-28 18:48:27,640 - INFO - Closing down clientserver connection

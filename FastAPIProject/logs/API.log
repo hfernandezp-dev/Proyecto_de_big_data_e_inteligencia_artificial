@@ -41,3 +41,22 @@
 2025-12-22 11:32:13,164 - INFO - se ha obtenido el csv
 2025-12-28 14:22:14,748 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
 2025-12-28 14:34:01,829 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-28 18:56:25,784 - ERROR - HTTP 401 | Path: /api/recent-tracks | Detail: {
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+2025-12-28 18:56:48,384 - ERROR - HTTP 401 | Path: /api/recent-tracks | Detail: {
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+2025-12-28 18:57:53,334 - ERROR - HTTP 401 | Path: /api/recent-tracks | Detail: {
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+2025-12-28 19:00:01,632 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}

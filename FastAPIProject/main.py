@@ -1,3 +1,6 @@
+import subprocess
+import sys
+
 from fastapi import FastAPI, Header, HTTPException,Request,Depends,Security
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException as FastAPIHTTPException
@@ -12,7 +15,7 @@ import os
 import base64
 from dotenv import load_dotenv
 import joblib
-from schemas import CancionEntrada
+from .schemas import CancionEntrada
 import logging
 
 
@@ -29,6 +32,9 @@ def iniciar_logger():
 iniciar_logger()
 
 origins = [
+    "http://localhost:4200",
+    "http://localhost:5500",
+    "http://localhost:8080"
     "http://192.168.1.40:5500",
     "http://localhost:5500"
 ]
@@ -76,7 +82,16 @@ def login():
     )
     return RedirectResponse(url)
 
-
+@app.get("/runflow")
+async def run_flow():
+    FLOW_PATH = BASE_DIR / "src" / "flows" / "spotify_flow.py"
+    result = subprocess.run([sys.executable, str(FLOW_PATH)], capture_output=True, text=True)
+    return {
+        "status": "Flow ejecutado",
+        "stdout": result.stdout,
+        "stderr": result.stderr,
+        "returncode": result.returncode
+    }
 
 @app.get("/callback")
 def callback(code: str):
