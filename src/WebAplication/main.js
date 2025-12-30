@@ -308,17 +308,6 @@ container.append(item);
 
 
 
-  /* $.ajax({
-    type: "get",
-    url: "http://localhost:8000/api/conseguir_canciones",
-    data: {ids:ids, access_token: accessToken},
-    dataType: "json",
-    success: function (response) {
-      console.log("Datos de cancionesParaPredecir:", response);
-    }
-  }); */
-
-
 }
 
 
@@ -328,27 +317,29 @@ function initApp() {
     const $accessTokenInput = $("#access-token");
     const $enviarTokenBtn = $("#enviarToken");
 
-    // Inicialmente ocultamos input y botón de enviar token
+    const $graficosContainer = $("#graficosConteiner");
+
+
+    //se oculta el input al principio
     $accessTokenInput.hide();
     $enviarTokenBtn.hide();
+    $graficosContainer.hide();
 
-    // Variable simulando estado de login
+    
     let isLoggedIn = false;
 
-    // Si el usuario ya está logueado, mostramos el token y botón
     if (isLoggedIn) {
         $accessTokenInput.show();
         $enviarTokenBtn.show();
     }
 
-    // Evento para botón de login
+    
     $loginBtn.on("click", function() {
+        alert("Después de hacer login en Spotify, copia el token de acceso de la URL y pégalo en el campo de texto que se mostrara");
         window.open("http://localhost:8000/login", "_blank");
-        alert("Después de hacer login en Spotify, vuelve aquí y presiona OK para cargar tus canciones.");
-
-        // Simulamos login
+        $accessTokenInput.show();
+        
         isLoggedIn = true;
-        $accessTokenInput.val("TOKEN_SIMULADO").show();
         $enviarTokenBtn.show();
     });
 
@@ -356,6 +347,8 @@ function initApp() {
    $enviarTokenBtn.on("click", function() {
     const token = $accessTokenInput.val();
     if (token) {
+        $accessTokenInput.hide();
+        $enviarTokenBtn.hide();
         console.log("Token enviado:", token);
         alert("Token enviado correctamente");
 
@@ -377,6 +370,7 @@ function initApp() {
                     dataType: "json",
                     success: function (recentTracks) { 
                         console.log("Datos de canciones:", recentTracks);
+                        $graficosContainer.show();
                         const chartData = prepareChartData(recentTracks);
                         drawBarChart(chartData,"#chart");
 
