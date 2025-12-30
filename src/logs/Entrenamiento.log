@@ -63,3 +63,27 @@
 2025-12-22 18:57:21,733 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.75s
 2025-12-22 18:57:21,733 - INFO - Se va a crear el dataset de canciones
 2025-12-22 18:57:21,772 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-28 18:39:57,459 - INFO - Logger iniciado correctamente
+2025-12-28 18:39:57,878 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-28 18:40:02,604 - INFO - Métricas registradas en el historial JSON.
+2025-12-28 18:40:02,604 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.68s
+2025-12-28 18:40:02,604 - INFO - Se va a crear el dataset de canciones
+2025-12-28 18:40:02,650 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-28 18:41:45,819 - INFO - Logger iniciado correctamente
+2025-12-28 18:41:46,055 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-28 18:41:50,760 - INFO - Métricas registradas en el historial JSON.
+2025-12-28 18:41:50,760 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.67s
+2025-12-28 18:41:50,760 - INFO - Se va a crear el dataset de canciones
+2025-12-28 18:41:50,796 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-28 18:48:00,403 - INFO - Logger iniciado correctamente
+2025-12-28 18:48:00,502 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-28 18:48:04,816 - INFO - Métricas registradas en el historial JSON.
+2025-12-28 18:48:04,816 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.28s
+2025-12-28 18:48:04,816 - INFO - Se va a crear el dataset de canciones
+2025-12-28 18:48:04,842 - INFO - Se ha creado el dataset de canciones correctamente
+2025-12-28 18:48:32,117 - INFO - Logger iniciado correctamente
+2025-12-28 18:48:32,324 - INFO - Datos de entrenamiento y prueba cargados y escalados correctamente
+2025-12-28 18:48:37,302 - INFO - Métricas registradas en el historial JSON.
+2025-12-28 18:48:37,302 - INFO - Modelo entrenado | k=4 | silhouette=0.2731 | 4.94s
+2025-12-28 18:48:37,302 - INFO - Se va a crear el dataset de canciones
+2025-12-28 18:48:37,331 - INFO - Se ha creado el dataset de canciones correctamente
