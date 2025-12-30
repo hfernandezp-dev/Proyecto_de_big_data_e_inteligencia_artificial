@@ -1,0 +1,12 @@
+2025-12-30 15:32:55,724 - INFO - se ha obtenido el csv
+2025-12-30 15:32:56,608 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 15:57:46,582 - INFO - se ha obtenido el csv
+2025-12-30 15:57:47,580 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 15:57:47,751 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 15:59:15,194 - INFO - se ha obtenido el csv
+2025-12-30 15:59:16,292 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 15:59:16,465 - INFO - se ha obtenido datos de las canciones pedidas

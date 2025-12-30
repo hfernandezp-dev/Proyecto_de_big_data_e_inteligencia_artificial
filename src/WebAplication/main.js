@@ -3,8 +3,9 @@ $(document).ready(function() {
   $MensajeError.hide();
   
 
-   // EjecutarFlow();
+   
      initApp(); 
+    
 });
 
 function EjecutarFlow(){
@@ -289,7 +290,8 @@ function  mostrarRecomensaciones(accessToken){
                   container.append(item);
               
                 });
-
+                //Como se acaba ya la conexion con la api ejecuto el flow para actualizar los datos
+                EjecutarFlow();
 
 
 
