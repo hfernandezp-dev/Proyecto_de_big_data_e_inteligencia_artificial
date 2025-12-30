@@ -1,6 +1,6 @@
 $(document).ready(function() {
    // EjecutarFlow();
-    initApp();
+     initApp(); 
 });
 
 function EjecutarFlow(){
@@ -216,7 +216,110 @@ function prepareSongsChartData(tracks) {
   return sortedGenres.slice(0, topN);
 }
 
+function  mostrarRecomensaciones(accessToken){
+ //se ha decidido poner la clave api que aunque sea una vulnerabilidad es la mejor forma sin hacer un cambio significativo debido a los plazos
+  $.ajax({
+    type: "get",
+    url: "http://localhost:8000/obtener_datos_emul",
+    headers: {
+    "x-api-key": "spotify123"
+  },
+    dataType: "json",
+    success: function (response) {
+      console.log("Datos de obtener2_datos_emul:", response);
+      //se va ha hacer el entreanemiento
+      cancionEnviar={
+        instrumentalness: Number(response.instrumentalness),
+        speechiness: Number(response.speechiness),
+        danceability: Number(response.danceability),
+        valence: Number(response.valence),
+        tempo: Number(response.tempo)
+      };
+       console.log("Datos de cancionEnviar:", cancionEnviar);
+      $.ajax({
+        type: "post",
+        url: "http://localhost:8000/prediccion",
+        contentType: "application/json",
+        data: JSON.stringify(cancionEnviar),
+        headers: {
+              "x-api-key": "spotify123"
+            },
+        dataType: "json",
+        success: function (response) {
+          console.log("Datos de prediccion:", response);
+          const cancionesIds = [...new Set(response.recomendaciones.map(t => t.track_id).filter(Boolean))];
+          console.log("ids canciones:", cancionesIds);
+            $.ajax({
+              type: "get",
+              url: "http://localhost:8000/api/conseguir_canciones",
+              data: {ids:cancionesIds.join(','), access_token: accessToken},
+              dataType: "json",
+               headers: {
+                "x-api-key": "spotify123"
+              },
+              success: function (response) {
+                console.log("canciones con caratulas:", response);
+                const tracks = response.tracks;
+                const container = $("#recomendacionesContent");
+                container.empty();
 
+                tracks.forEach((track, index) => {
+                  const image = track.album.images[0]?.url;
+                  const name = track.name;
+                  const artist = track.artists.map(a => a.name).join(", ");
+                  const spotifyUrl = track.external_urls.spotify;
+
+                  const activeClass = index === 0 ? "active" : "";
+
+                 const item = `
+  <div class="carousel-item ${activeClass}">
+    <div class="reco-wrapper" onclick="window.open('${spotifyUrl}', '_blank')">
+      
+      <div class="reco-blur-bg" style="background-image: url('${image}');"></div>
+
+      <div class="reco-content">
+        <img src="${image}" class="reco-img shadow-lg" alt="${name}">
+        <div class="reco-text">
+          <h5 class="text-truncate">${name}</h5>
+          <p class="mb-0 text-truncate">${artist}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+`;
+container.append(item);
+                });
+
+
+
+
+
+
+
+
+              }
+            });
+
+        }
+      });
+    }
+  });
+
+
+
+  /* $.ajax({
+    type: "get",
+    url: "http://localhost:8000/api/conseguir_canciones",
+    data: {ids:ids, access_token: accessToken},
+    dataType: "json",
+    success: function (response) {
+      console.log("Datos de cancionesParaPredecir:", response);
+    }
+  }); */
+
+
+}
 
 
 
@@ -288,51 +391,9 @@ function initApp() {
                                 console.log("Datos de géneros:", genresResponse);
                                 const genreData = prepareGenresData(genresResponse);
                                 drawBarChart(genreData,"#genre-chart");
+                                mostrarRecomensaciones(accessToken);
                             }
                         });
-
-                     /*    // --- A. DIBUJAR TARJETAS (Usando el ARRAY CORRECTO) ---
-                        const container = d3.select("#chart");
-                        container.selectAll("*").remove(); 
-                        
-                        // NOTA: Usar 'recentTracks' en lugar de 'response'
-                        const cards = container.selectAll(".song")
-                            .data(recentTracks) 
-                            .enter()
-                            // ... (resto de tu código D3 para tarjetas) ...
-                            .append("div")
-                            .attr("class", "song")
-                            .style("margin", "10px")
-                            // ... (estilos)
-                            .html(d => `
-                                <strong>${d.name}</strong><br>
-                                ${d.artists.join(", ")}<br>
-                                <small>${new Date(d.played_at).toLocaleString()}</small>
-                            `);
-                        
-                        // --- B. PROCESAMIENTO DE GÉNEROS (DENTRO DEL ÁMBITO CORRECTO) ---
-                        const uniqueArtistIds = Array.from(new Set(
-                            recentTracks // <-- ¡USAMOS EL ARRAY DE CANCIONES AQUÍ!
-                                .map(track => track.artist_id)
-                                .filter(id => id) 
-                        ));
-                        
-                        if (uniqueArtistIds.length === 0) {
-                            console.log("No hay artistas para consultar géneros.");
-                            return;
-                        } */
-
-                      /*   $.ajax({
-                            type: "get",
-                            url: "http://localhost:8000/api/generos",
-                            // NOTA: Recuerda que `ids` debe ser una cadena separada por comas en la URL
-                            data: { ids: uniqueArtistIds.join(','), access_token: accessToken }, 
-                            dataType: "json",
-                            success: function (genresResponse) {
-                                console.log("Datos de géneros:", genresResponse);
-                                // Aquí puedes llamar a tu función processDataForD3(recentTracks, genresResponse)
-                            }
-                        }); */
                     }
                 });
 

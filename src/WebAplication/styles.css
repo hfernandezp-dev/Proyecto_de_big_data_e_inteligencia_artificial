@@ -1,0 +1,61 @@
+
+
+
+body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212; /* Fondo oscuro tipo Spotify */
+      color: #FFFFFF; /* Letras blancas */
+      margin: 0;
+      padding: 20px;
+    }
+
+#container-principal {
+  position: relative;
+  z-index: 1;
+  background-color: #121212; /* sólido */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+  
+h2, h3 {
+    color: #1DB954; /* Verde Spotify */
+    font-weight: 700;
+  }
+  .reco-card {
+  height: 100%;
+  border-radius: 20px;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-color: #000; 
+  position: relative;
+}
+
+.reco-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  border-radius: 0 0 20px 20px;
+}
+.charts-section {
+  min-height: 450px;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+#genre-chart,
+#chart {
+  width: 100%;
+  height: 350px;
+}
+
+#genre-chart svg,
+#chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

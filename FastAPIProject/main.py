@@ -188,6 +188,31 @@ async def get_generos(ids:str,access_token: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")
 
+@app.get("/api/conseguir_canciones")
+async def get_conseguir_canciones(ids:str,access_token: str):
+    try:
+        artist_ids_list = ids.split(',')
+        if (len(artist_ids_list) > 50):
+            raise HTTPException(status_code=400, detail="spotify solo permite 50 id")
+
+        url = "https://api.spotify.com/v1/tracks"
+        headers = {
+            "Authorization": f"Bearer {access_token}"
+        }
+        params = {
+            "ids": ids
+        }
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        logging.info("se ha obtenido datos de las canciones pedidas")
+        return response.json()
+    except Exception as e:
+        logging.error(f"error en la carga de ids: {e}")
+    except requests.exceptions.HTTPError as e:
+        status_code = e.response.status_code
+        logging.error(f"error al conectarse con la api con codigo: {status_code}")
+
+
 
 
 #simula la entrada de datos ya que no se ha desplegado
@@ -198,8 +223,13 @@ async def get_generos(ids:str,access_token: str):
 async def obtener2_datos_emul():
     csv_path = BASE_DIR / "src" / "datasets" / "spotify_data.csv"
     app.state.df_usuario = pd.read_csv(csv_path)
+    df_usuarioEmul=pd.read_csv(csv_path)
+    fila = df_usuarioEmul.sample(n=1)
+    fila_json = fila.to_dict(orient="records")[0]
     logging.info("se ha obtenido el csv")
-    return {"se ha obtenido el csv": f"{csv_path}"}
+
+    return fila_json
+    # return {"se ha obtenido el csv": f"{csv_path}"}
 
 #emula el envio de datos me imagino que para el dashboard eso ya se tiene que ver
 @app.get("/enviar_datos_emul"
@@ -244,7 +274,7 @@ async def predecir_popularidad(cancion: CancionEntrada):
             n=min(5, len(df_cluster)),
             random_state=42
         )
-        resultado = recomendaciones[["track_name", "artist_name"]].to_dict(orient="records")
+        resultado = recomendaciones[["track_name", "artist_name","track_id"]].to_dict(orient="records")
         # Devuelve el cluster con las canciones recomendaciones
         if cluster and resultado is not None:
             logging.info(f"Se ha generado una prediccion \n {resultado} \n correctamente para el cluster {cluster}")
