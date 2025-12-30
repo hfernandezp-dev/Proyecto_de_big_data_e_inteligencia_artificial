@@ -15,7 +15,7 @@ import os
 import base64
 from dotenv import load_dotenv
 import joblib
-from schemas import CancionEntrada
+from .schemas import CancionEntrada
 import logging
 
 
@@ -67,9 +67,14 @@ API_KEY = os.getenv("SPOTIFY_API_KEY")
 api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
 
 REDIRECT_URI = "https://127.0.0.1/callback"
-CLIENT_ID = "9ac071fd07fd47768bcdbbc5f2fa3566"
-CLIENT_SECRET = "c82569bd56d249ada2aa9d72ab0a8ee9"
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 access_tokens = {}
+
+async def validar_api_key(api_key_header: str = Security(api_key_header)):
+    if api_key_header != API_KEY:
+        raise HTTPException(status_code=401, detail="API Key inválida")
+
 
 @app.get("/login")
 def login():
@@ -83,7 +88,11 @@ def login():
     )
     return RedirectResponse(url)
 
-@app.get("/runflow")
+@app.get("/runflow"
+    , summary = "ejecuta el flow una vez acabado"
+    , description = "La idea de este endpoint es ejecutar el flow cuando se necesite para asi refrescar los datos y entrenar nuevos modelos"
+    , dependencies = [Depends(validar_api_key)]
+    )
 async def run_flow():
     FLOW_PATH = BASE_DIR / "src" / "flows" / "spotify_flow.py"
     result = subprocess.run([sys.executable, str(FLOW_PATH)], capture_output=True, text=True)
@@ -94,7 +103,11 @@ async def run_flow():
         "returncode": result.returncode
     }
 
-@app.get("/callback")
+@app.get("/callback"
+    , summary="Genera el accestoken para consumir la API"
+    ,description="Genera el accestoken que caduda cada hora para asi poder consumir la API de Spotify"
+    ,dependencies=[Depends(validar_api_key)]
+         )
 def callback(code: str):
     token_url = "https://accounts.spotify.com/api/token"
     data = {
@@ -135,10 +148,12 @@ def get_spotify_token():
     return response.json()["access_token"]
 
 
-async def validar_api_key(api_key_header: str = Security(api_key_header)):
-    if api_key_header != API_KEY:
-        raise HTTPException(status_code=401, detail="API Key inválida")
-@app.get("/api/recent-tracks")
+
+@app.get("/api/recent-tracks"
+    , summary="Recupera las ultimas 50 canciones"
+    ,description="Recupera las ultimas canciones para el uso que se necesite, evniando el accesstoken ya conseguido"
+    , dependencies=[Depends(validar_api_key)]
+         )
 def get_recent_tracks(access_token: str):
     url = "https://api.spotify.com/v1/me/player/recently-played?limit=50"
     headers = {"Authorization": f"Bearer {access_token}"}
@@ -164,7 +179,11 @@ def get_recent_tracks(access_token: str):
 
 
 
-@app.get("/api/generos")
+@app.get("/api/generos"
+    , summary="Recupera los generos de los grupos"
+    ,description="Se usa para recuperar generos y asi construir un conjunto de datos mas complejo"
+    , dependencies=[Depends(validar_api_key)]
+         )
 async def get_generos(ids:str,access_token: str):
     artist_ids_list = ids.split(',')
     if(len(artist_ids_list)>50):
@@ -188,7 +207,11 @@ async def get_generos(ids:str,access_token: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")
 
-@app.get("/api/conseguir_canciones")
+@app.get("/api/conseguir_canciones"
+    , summary="Consigue las canciones"
+    ,description="Se ha diseñado para que con los ids de las canciones se recuperen todos los datos de las mismas"
+    , dependencies=[Depends(validar_api_key)]
+         )
 async def get_conseguir_canciones(ids:str,access_token: str):
     try:
         artist_ids_list = ids.split(',')

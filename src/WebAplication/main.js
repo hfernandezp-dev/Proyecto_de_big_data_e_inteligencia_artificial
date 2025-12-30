@@ -1,15 +1,28 @@
 $(document).ready(function() {
+  const $MensajeError = $("#mensajeError");
+  $MensajeError.hide();
+  
+
    // EjecutarFlow();
      initApp(); 
 });
 
 function EjecutarFlow(){
+  const $MensajeError = $("#mensajeError");
     $.ajax({
         type: "get",
         url: "http://localhost:8000/runflow",
         dataType: "json",
+        headers: {
+                "x-api-key": "spotify123"
+              },
         success: function (response) {
             console.log("Pipeline ejecutado:", response);
+        },
+        error: function(xhr, status, error) {
+
+            console.error("Error al ejecutar el pipeline:", error);
+            $MensajeError.text("Error al ejecutar el pipeline: " + error).show();
         }
     });
 }
@@ -198,25 +211,10 @@ function prepareChartData(tracks) {
   }));
 }
 
-function prepareSongsChartData(tracks) {
-  const counter = {};
 
-  genresResponse.artists.forEach(artist => {
-    artist.genres.forEach(genre => {
-      counter[genre] = (counter[genre] || 0) + 1;
-    });
-  });
-
-  // Convertir a array y ordenar de mayor a menor
-  const sortedGenres = Object.entries(counter)
-    .map(([name, value]) => ({ name, value }))
-    .sort((a, b) => b.value - a.value);
-
-  // Devolver solo los top N
-  return sortedGenres.slice(0, topN);
-}
 
 function  mostrarRecomensaciones(accessToken){
+  const $MensajeError = $("#mensajeError");
  //se ha decidido poner la clave api que aunque sea una vulnerabilidad es la mejor forma sin hacer un cambio significativo debido a los plazos
   $.ajax({
     type: "get",
@@ -272,23 +270,24 @@ function  mostrarRecomensaciones(accessToken){
                   const activeClass = index === 0 ? "active" : "";
 
                  const item = `
-  <div class="carousel-item ${activeClass}">
-    <div class="reco-wrapper" onclick="window.open('${spotifyUrl}', '_blank')">
-      
-      <div class="reco-blur-bg" style="background-image: url('${image}');"></div>
+                  <div class="carousel-item ${activeClass}">
+                    <div class="reco-wrapper" onclick="window.open('${spotifyUrl}', '_blank')">
+                      
+                      <div class="reco-blur-bg" style="background-image: url('${image}');"></div>
 
-      <div class="reco-content">
-        <img src="${image}" class="reco-img shadow-lg" alt="${name}">
-        <div class="reco-text">
-          <h5 class="text-truncate">${name}</h5>
-          <p class="mb-0 text-truncate">${artist}</p>
-        </div>
-      </div>
+                      <div class="reco-content">
+                        <img src="${image}" class="reco-img shadow-lg" alt="${name}">
+                        <div class="reco-text">
+                          <h5 class="text-truncate">${name}</h5>
+                          <p class="mb-0 text-truncate">${artist}</p>
+                        </div>
+                      </div>
 
-    </div>
-  </div>
-`;
-container.append(item);
+                    </div>
+                  </div>
+                `;
+                  container.append(item);
+              
                 });
 
 
@@ -298,12 +297,27 @@ container.append(item);
 
 
 
+              },
+              error: function( error) {
+
+              console.error("Error al obtener las canciones", error);
+              $MensajeError.text("Error al obtener las canciones").show();
               }
             });
+          
+        },
+         error: function( error) {
 
+            console.error("Error al obtener la prediccion", error);
+            $MensajeError.text("Error al obtener la prediccion").show();
         }
       });
-    }
+    },
+     error: function( error) {
+
+            console.error("Error al obtener los datos", error);
+            $MensajeError.text("Error al obtener los datos").show();
+        }
   });
 
 
@@ -313,6 +327,7 @@ container.append(item);
 
 
 function initApp() {
+    const $MensajeError = $("#mensajeError");
     const $loginBtn = $("#login-btn");
     const $accessTokenInput = $("#access-token");
     const $enviarTokenBtn = $("#enviarToken");
@@ -335,6 +350,7 @@ function initApp() {
 
     
     $loginBtn.on("click", function() {
+        $MensajeError.hide();
         alert("Después de hacer login en Spotify, copia el token de acceso de la URL y pégalo en el campo de texto que se mostrara");
         window.open("http://localhost:8000/login", "_blank");
         $accessTokenInput.show();
@@ -352,11 +368,13 @@ function initApp() {
         console.log("Token enviado:", token);
         alert("Token enviado correctamente");
 
-        // PASO 1: Intercambio de Código (Callback)
         $.ajax({
             type: "get",
             url: "http://localhost:8000/callback",
             data: { code: token },
+            headers: {
+                "x-api-key": "spotify123"
+              },
             dataType: "json",
             success: function (authResponse) { // <-- RENOMBRAR: authResponse
                 console.log("Respuesta del servidor (Token):", authResponse);
@@ -368,6 +386,9 @@ function initApp() {
                     url: "http://localhost:8000/api/recent-tracks",
                     data: { access_token: accessToken },
                     dataType: "json",
+                    headers: {
+                      "x-api-key": "spotify123"
+                    },
                     success: function (recentTracks) { 
                         console.log("Datos de canciones:", recentTracks);
                         $graficosContainer.show();
@@ -381,16 +402,32 @@ function initApp() {
                             url: "http://localhost:8000/api/generos",
                             data: { ids: artistIds.join(','), access_token: accessToken }, 
                             dataType: "json",
+                            headers: {
+                              "x-api-key": "spotify123"
+                            },
                             success: function (genresResponse) {
                                 console.log("Datos de géneros:", genresResponse);
                                 const genreData = prepareGenresData(genresResponse);
                                 drawBarChart(genreData,"#genre-chart");
                                 mostrarRecomensaciones(accessToken);
+                            },
+                            error: function( error) {
+                            console.error("Error al obtener los generos", error);
+                            $MensajeError.text("Error al obtener los generos").show();
                             }
                         });
+                    },
+                    error: function( error) {
+                    console.error("Error al obtener las canciones recientes", error);
+                    $MensajeError.text("Error al obtener las canciones recientes").show();
                     }
                 });
 
+            },
+            error: function( error) {
+
+              console.error("Error al obtener el accesstoken", error);
+              $MensajeError.text("Error al obtener el accesstoken").show();
             }
         });
 
