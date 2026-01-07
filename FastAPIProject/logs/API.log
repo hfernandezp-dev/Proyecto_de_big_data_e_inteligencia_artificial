@@ -39,3 +39,286 @@
  correctamente para el cluster 1
 2025-12-22 10:34:50,587 - INFO - se ha obtenido el csv
 2025-12-22 11:32:13,164 - INFO - se ha obtenido el csv
+2025-12-28 14:22:14,748 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-28 14:34:01,829 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-28 18:56:25,784 - ERROR - HTTP 401 | Path: /api/recent-tracks | Detail: {
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+2025-12-28 18:56:48,384 - ERROR - HTTP 401 | Path: /api/recent-tracks | Detail: {
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+2025-12-28 18:57:53,334 - ERROR - HTTP 401 | Path: /api/recent-tracks | Detail: {
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+2025-12-28 19:00:01,632 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-29 15:42:51,403 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-29 15:53:46,161 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-29 16:05:40,401 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-29 17:24:51,471 - ERROR - HTTP 400 | Path: /callback | Detail: {"error":"invalid_grant","error_description":"Invalid authorization code"}
+2025-12-29 22:54:01,068 - ERROR - HTTP 401 | Path: /obtener_datos_emul | Detail: API Key inválida
+2025-12-29 22:54:01,432 - ERROR - HTTP 401 | Path: /obtener_datos_emul | Detail: API Key inválida
+2025-12-29 22:57:51,907 - INFO - se ha obtenido el csv
+2025-12-29 22:59:39,254 - ERROR - HTTP 401 | Path: /obtener_datos_emul | Detail: API Key inválida
+2025-12-29 23:01:11,511 - ERROR - HTTP 401 | Path: /obtener_datos_emul | Detail: API Key inválida
+2025-12-29 23:01:13,307 - ERROR - HTTP 401 | Path: /obtener_datos_emul | Detail: API Key inválida
+2025-12-29 23:03:08,614 - INFO - se ha obtenido el csv
+2025-12-29 23:04:43,043 - INFO - se ha obtenido el csv
+2025-12-29 23:05:46,709 - INFO - se ha obtenido el csv
+2025-12-29 23:06:05,183 - INFO - se ha obtenido el csv
+2025-12-29 23:06:12,327 - INFO - se ha obtenido el csv
+2025-12-29 23:06:14,888 - INFO - se ha obtenido el csv
+2025-12-29 23:06:35,045 - INFO - se ha obtenido el csv
+2025-12-29 23:06:42,227 - INFO - se ha obtenido el csv
+2025-12-29 23:07:58,089 - INFO - se ha obtenido el csv
+2025-12-29 23:08:16,672 - INFO - se ha obtenido el csv
+2025-12-29 23:08:20,411 - INFO - se ha obtenido el csv
+2025-12-29 23:08:24,819 - INFO - se ha obtenido el csv
+2025-12-29 23:09:21,028 - INFO - se ha obtenido el csv
+2025-12-29 23:09:25,494 - INFO - se ha obtenido el csv
+2025-12-29 23:11:05,477 - INFO - se ha obtenido el csv
+2025-12-29 23:11:11,801 - INFO - se ha obtenido el csv
+2025-12-29 23:37:37,139 - INFO - se ha obtenido el csv
+2025-12-29 23:38:12,874 - INFO - se ha obtenido el csv
+2025-12-29 23:38:16,275 - INFO - se ha obtenido el csv
+2025-12-29 23:38:40,087 - INFO - se ha obtenido el csv
+2025-12-29 23:38:43,063 - INFO - se ha obtenido el csv
+2025-12-29 23:39:14,581 - INFO - se ha obtenido el csv
+2025-12-29 23:39:19,504 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia'}] 
+ correctamente para el cluster 1
+2025-12-30 11:36:04,585 - INFO - se ha obtenido el csv
+2025-12-30 11:36:09,131 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia'}] 
+ correctamente para el cluster 1
+2025-12-30 11:37:43,302 - INFO - se ha obtenido el csv
+2025-12-30 11:37:44,731 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 11:45:39,773 - INFO - se ha obtenido el csv
+2025-12-30 11:45:39,789 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 11:45:56,588 - INFO - se ha obtenido el csv
+2025-12-30 11:45:56,603 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 11:46:04,411 - INFO - se ha obtenido el csv
+2025-12-30 11:46:04,426 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 11:46:25,253 - INFO - se ha obtenido el csv
+2025-12-30 11:46:25,269 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 11:46:31,887 - INFO - se ha obtenido el csv
+2025-12-30 11:46:31,905 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 11:46:52,279 - INFO - se ha obtenido el csv
+2025-12-30 11:46:52,293 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 11:46:55,602 - INFO - se ha obtenido el csv
+2025-12-30 11:46:55,619 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 11:47:07,875 - INFO - se ha obtenido el csv
+2025-12-30 11:47:07,887 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 11:56:17,890 - INFO - se ha obtenido el csv
+2025-12-30 11:56:17,907 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 11:58:15,468 - INFO - se ha obtenido el csv
+2025-12-30 11:58:15,483 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 11:58:30,450 - INFO - se ha obtenido el csv
+2025-12-30 11:58:30,463 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 11:58:40,015 - INFO - se ha obtenido el csv
+2025-12-30 11:58:40,029 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 11:59:25,574 - INFO - se ha obtenido el csv
+2025-12-30 11:59:25,588 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 11:59:28,118 - INFO - se ha obtenido el csv
+2025-12-30 11:59:28,130 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 12:00:03,075 - INFO - se ha obtenido el csv
+2025-12-30 12:00:03,091 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:00:36,128 - INFO - se ha obtenido el csv
+2025-12-30 12:00:36,148 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:02:47,611 - INFO - se ha obtenido el csv
+2025-12-30 12:02:47,626 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:03:25,397 - INFO - se ha obtenido el csv
+2025-12-30 12:03:25,411 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:03:25,802 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:05:52,397 - INFO - se ha obtenido el csv
+2025-12-30 12:05:52,409 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:05:52,876 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:10:31,727 - INFO - se ha obtenido el csv
+2025-12-30 12:10:32,161 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:13:13,266 - INFO - se ha obtenido el csv
+2025-12-30 12:13:13,279 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:13:13,773 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:15:21,023 - INFO - se ha obtenido el csv
+2025-12-30 12:15:21,034 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 12:15:21,542 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:16:52,532 - INFO - se ha obtenido el csv
+2025-12-30 12:16:52,544 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:16:52,989 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:18:15,747 - INFO - se ha obtenido el csv
+2025-12-30 12:18:15,759 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:18:16,188 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:19:33,097 - INFO - se ha obtenido el csv
+2025-12-30 12:19:33,110 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 12:19:33,552 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:21:49,339 - INFO - se ha obtenido el csv
+2025-12-30 12:21:49,785 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:24:54,117 - INFO - se ha obtenido el csv
+2025-12-30 12:24:54,534 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:26:36,209 - INFO - se ha obtenido el csv
+2025-12-30 12:26:36,224 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:26:36,627 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:28:01,580 - INFO - se ha obtenido el csv
+2025-12-30 12:28:01,591 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:28:02,009 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:33:29,452 - INFO - se ha obtenido el csv
+2025-12-30 12:33:29,466 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:33:29,923 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:34:25,820 - INFO - se ha obtenido el csv
+2025-12-30 12:34:25,831 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:34:26,267 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:50:03,810 - INFO - se ha obtenido el csv
+2025-12-30 12:50:03,821 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:50:04,242 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:50:52,821 - INFO - se ha obtenido el csv
+2025-12-30 12:50:52,832 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:50:53,278 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:51:15,696 - INFO - se ha obtenido el csv
+2025-12-30 12:51:15,707 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 12:51:16,171 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:51:42,795 - INFO - se ha obtenido el csv
+2025-12-30 12:51:42,806 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:51:43,233 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:52:55,023 - INFO - se ha obtenido el csv
+2025-12-30 12:52:55,035 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 12:52:55,464 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 12:55:52,869 - INFO - se ha obtenido el csv
+2025-12-30 12:55:52,880 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 12:55:53,287 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 13:10:53,987 - INFO - se ha obtenido el csv
+2025-12-30 13:10:54,000 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 13:10:54,481 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:30:55,475 - INFO - se ha obtenido el csv
+2025-12-30 14:30:56,939 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 14:30:57,448 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:31:54,816 - INFO - se ha obtenido el csv
+2025-12-30 14:31:54,826 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 14:31:55,219 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:36:37,331 - INFO - se ha obtenido el csv
+2025-12-30 14:36:37,342 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 14:36:37,856 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:37:05,557 - INFO - se ha obtenido el csv
+2025-12-30 14:37:05,568 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 14:37:06,031 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:37:27,957 - INFO - se ha obtenido el csv
+2025-12-30 14:37:27,967 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 14:37:28,368 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:37:53,438 - INFO - se ha obtenido el csv
+2025-12-30 14:37:53,448 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 14:37:53,947 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 14:38:24,015 - INFO - se ha obtenido el csv
+2025-12-30 14:38:24,025 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Nava', 'artist_name': 'Rival Sons', 'track_id': '3qm43Mt5G2yg5QehyaMegJ'}, {'track_name': 'Blood for Poppies', 'artist_name': 'Garbage', 'track_id': '5zLOo5CnYIf9eQ4bD5wKaU'}, {'track_name': 'Touré', 'artist_name': 'The Touré-Raichel Collective', 'track_id': '4Mc0l76ON4ggFCqXhDoPb4'}, {'track_name': 'Honest Feedback', 'artist_name': 'Saint Motel', 'track_id': '33oiIHbV9SlEjoEcAbssYl'}, {'track_name': 'Blue & Evil', 'artist_name': 'Joe Bonamassa', 'track_id': '3UfpQ9MMg11EGSqiNem4wS'}] 
+ correctamente para el cluster 3
+2025-12-30 14:38:24,449 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 15:25:15,781 - INFO - se ha obtenido el csv
+2025-12-30 15:25:17,249 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 15:25:17,707 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 15:28:06,994 - INFO - se ha obtenido el csv
+2025-12-30 15:28:08,296 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 15:28:08,729 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 15:48:57,776 - INFO - se ha obtenido el csv
+2025-12-30 15:48:59,102 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'The Only Name (Yours Will Be)', 'artist_name': 'Big Daddy Weave', 'track_id': '3Ba5WQizFbQPRN7MtlXoTF'}, {'track_name': "Don't You Worry Child - Radio Edit", 'artist_name': 'Swedish House Mafia', 'track_id': '2V65y3PX4DkRhy1djlxd9p'}, {'track_name': 'Down South Party (feat. Special)', 'artist_name': 'Bigg Robb', 'track_id': '6fQbC7k7OT05q2vpmjpKiH'}, {'track_name': 'I Idolize You', 'artist_name': 'Marcia Ball', 'track_id': '2FPP5jf24eGRRHuuh96eq8'}, {'track_name': 'Te Perdiste Mi Amor (feat. Prince Royce)', 'artist_name': 'Thalia', 'track_id': '1Q8NiatGDc6YgefNwT7Jgu'}] 
+ correctamente para el cluster 1
+2025-12-30 15:48:59,501 - INFO - se ha obtenido datos de las canciones pedidas
+2025-12-30 16:09:56,665 - INFO - se ha obtenido el csv
+2025-12-30 16:09:58,054 - INFO - Se ha generado una prediccion 
+ [{'track_name': 'Shiver - Live From The Vic In Chicago', 'artist_name': 'Cage The Elephant', 'track_id': '6Vc6FTgxMIIxUZ6FY518dJ'}, {'track_name': 'How Long Will I Love You', 'artist_name': 'Ellie Goulding', 'track_id': '3X003bO0MMxXEsJJxidiig'}, {'track_name': "You're Here", 'artist_name': 'Francesca Battistelli', 'track_id': '36RZFJ2VIx6dKs8ANTegX4'}, {'track_name': 'Maggie', 'artist_name': 'The Heavy Eyes', 'track_id': '3ZMUrPUbOVcwIlSJI5ApEe'}, {'track_name': 'Carry Me To The Cross', 'artist_name': 'Kutless', 'track_id': '1RdCpVB3Ggt8SCLuPodLY7'}] 
+ correctamente para el cluster 2
+2025-12-30 16:09:58,516 - INFO - se ha obtenido datos de las canciones pedidas

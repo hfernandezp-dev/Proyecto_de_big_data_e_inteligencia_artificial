@@ -1,13 +1,21 @@
+import subprocess
+import sys
+
 from fastapi import FastAPI, Header, HTTPException,Request,Depends,Security
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import HTTPException as FastAPIHTTPException
 from fastapi.security import APIKeyHeader
+from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
+
 from pathlib import Path
 import pandas as pd
+import requests
 import os
+import base64
 from dotenv import load_dotenv
 import joblib
-from schemas import CancionEntrada
+from .schemas import CancionEntrada
 import logging
 
 
@@ -23,12 +31,29 @@ def iniciar_logger():
 
 iniciar_logger()
 
+origins = [
+    "http://localhost:4200",
+    "http://localhost:5500",
+    "http://localhost:8080",
+    "http://192.168.1.40:5500",
+    "http://localhost:5500",
+    "http://localhost:63342"
+]
+
+
 app = FastAPI(
     title="API de Recomendación Musical",
     description="API para recomendar canciones usando clustering KMeans",
     version="0.5.0",
     docs_url="/docs",
     redoc_url="/redoc"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,12 +66,177 @@ load_dotenv(dotenv_path=env_path)
 API_KEY = os.getenv("SPOTIFY_API_KEY")
 api_key_header = APIKeyHeader(name="x-api-key", auto_error=False)
 
-
-
+REDIRECT_URI = "https://127.0.0.1/callback"
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+access_tokens = {}
 
 async def validar_api_key(api_key_header: str = Security(api_key_header)):
     if api_key_header != API_KEY:
         raise HTTPException(status_code=401, detail="API Key inválida")
+
+
+@app.get("/login")
+def login():
+    scope = "user-read-recently-played"
+    url = (
+        "https://accounts.spotify.com/authorize"
+        f"?client_id={CLIENT_ID}"
+        "&response_type=code"
+        f"&redirect_uri={REDIRECT_URI}"
+        f"&scope={scope}"
+    )
+    return RedirectResponse(url)
+
+@app.get("/runflow"
+    , summary = "ejecuta el flow una vez acabado"
+    , description = "La idea de este endpoint es ejecutar el flow cuando se necesite para asi refrescar los datos y entrenar nuevos modelos"
+    , dependencies = [Depends(validar_api_key)]
+    )
+async def run_flow():
+    FLOW_PATH = BASE_DIR / "src" / "flows" / "spotify_flow.py"
+    result = subprocess.run([sys.executable, str(FLOW_PATH)], capture_output=True, text=True)
+    return {
+        "status": "Flow ejecutado",
+        "stdout": result.stdout,
+        "stderr": result.stderr,
+        "returncode": result.returncode
+    }
+
+@app.get("/callback"
+    , summary="Genera el accestoken para consumir la API"
+    ,description="Genera el accestoken que caduda cada hora para asi poder consumir la API de Spotify"
+    ,dependencies=[Depends(validar_api_key)]
+         )
+def callback(code: str):
+    token_url = "https://accounts.spotify.com/api/token"
+    data = {
+        "grant_type": "authorization_code",
+        "code": code,
+        "redirect_uri": REDIRECT_URI,
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET
+    }
+    r = requests.post(token_url, data=data)
+    if r.status_code != 200:
+        raise HTTPException(status_code=r.status_code, detail=r.text)
+
+    tokens = r.json()
+    access_token = tokens["access_token"]
+    refresh_token = tokens.get("refresh_token")
+
+    # Guardamos el access_token temporalmente
+    access_tokens["user"] = access_token
+
+    return {"message": "Login exitoso", "access_token": access_token, "refresh_token": refresh_token}
+
+
+
+
+def get_spotify_token():
+    """
+    Obtiene un token temporal de Spotify usando Client Credentials
+    """
+    auth_str = f"{CLIENT_ID}:{CLIENT_SECRET}"
+    b64_auth_str = base64.b64encode(auth_str.encode()).decode()
+
+    response = requests.post(
+        "https://accounts.spotify.com/api/token",
+        headers={"Authorization": f"Basic {b64_auth_str}"},
+        data={"grant_type": "client_credentials"}
+    )
+    return response.json()["access_token"]
+
+
+
+@app.get("/api/recent-tracks"
+    , summary="Recupera las ultimas 50 canciones"
+    ,description="Recupera las ultimas canciones para el uso que se necesite, evniando el accesstoken ya conseguido"
+    , dependencies=[Depends(validar_api_key)]
+         )
+def get_recent_tracks(access_token: str):
+    url = "https://api.spotify.com/v1/me/player/recently-played?limit=50"
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    r = requests.get(url, headers=headers)
+    if r.status_code == 200:
+        data = r.json()
+        tracks = []
+        for item in data["items"]:
+            track = item["track"]
+            artist_id = track["artists"][0]["id"] if track["artists"] else None
+            tracks.append({
+                "name": track["name"],
+                "artists": [a["name"] for a in track["artists"]],
+                "artist_id": artist_id,
+                "album": track["album"]["name"],
+                "played_at": item["played_at"],
+                "image": track["album"]["images"][0]["url"] if track["album"]["images"] else None
+            })
+        return tracks
+    else:
+        raise HTTPException(status_code=r.status_code, detail=r.text)
+
+
+
+@app.get("/api/generos"
+    , summary="Recupera los generos de los grupos"
+    ,description="Se usa para recuperar generos y asi construir un conjunto de datos mas complejo"
+    , dependencies=[Depends(validar_api_key)]
+         )
+async def get_generos(ids:str,access_token: str):
+    artist_ids_list = ids.split(',')
+    if(len(artist_ids_list)>50):
+        raise HTTPException(status_code=400, detail="spotify solo permite 50 id")
+
+    url = "https://api.spotify.com/v1/artists"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    params = {
+        "ids": ids
+    }
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as e:
+        status_code = e.response.status_code
+        detail = e.response.json().get("error", {"message": "Error desconocido de Spotify"}).get("message")
+        raise HTTPException(status_code=status_code, detail=f"Error al obtener artistas de Spotify: {detail}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")
+
+@app.get("/api/conseguir_canciones"
+    , summary="Consigue las canciones"
+    ,description="Se ha diseñado para que con los ids de las canciones se recuperen todos los datos de las mismas"
+    , dependencies=[Depends(validar_api_key)]
+         )
+async def get_conseguir_canciones(ids:str,access_token: str):
+    try:
+        artist_ids_list = ids.split(',')
+        if (len(artist_ids_list) > 50):
+            raise HTTPException(status_code=400, detail="spotify solo permite 50 id")
+
+        url = "https://api.spotify.com/v1/tracks"
+        headers = {
+            "Authorization": f"Bearer {access_token}"
+        }
+        params = {
+            "ids": ids
+        }
+        response = requests.get(url, headers=headers, params=params)
+        response.raise_for_status()
+        logging.info("se ha obtenido datos de las canciones pedidas")
+        return response.json()
+    except Exception as e:
+        logging.error(f"error en la carga de ids: {e}")
+    except requests.exceptions.HTTPError as e:
+        status_code = e.response.status_code
+        logging.error(f"error al conectarse con la api con codigo: {status_code}")
+
+
+
 
 #simula la entrada de datos ya que no se ha desplegado
 @app.get("/obtener_datos_emul"
@@ -56,8 +246,13 @@ async def validar_api_key(api_key_header: str = Security(api_key_header)):
 async def obtener2_datos_emul():
     csv_path = BASE_DIR / "src" / "datasets" / "spotify_data.csv"
     app.state.df_usuario = pd.read_csv(csv_path)
+    df_usuarioEmul=pd.read_csv(csv_path)
+    fila = df_usuarioEmul.sample(n=1)
+    fila_json = fila.to_dict(orient="records")[0]
     logging.info("se ha obtenido el csv")
-    return {"se ha obtenido el csv": f"{csv_path}"}
+
+    return fila_json
+    # return {"se ha obtenido el csv": f"{csv_path}"}
 
 #emula el envio de datos me imagino que para el dashboard eso ya se tiene que ver
 @app.get("/enviar_datos_emul"
@@ -102,7 +297,7 @@ async def predecir_popularidad(cancion: CancionEntrada):
             n=min(5, len(df_cluster)),
             random_state=42
         )
-        resultado = recomendaciones[["track_name", "artist_name"]].to_dict(orient="records")
+        resultado = recomendaciones[["track_name", "artist_name","track_id"]].to_dict(orient="records")
         # Devuelve el cluster con las canciones recomendaciones
         if cluster and resultado is not None:
             logging.info(f"Se ha generado una prediccion \n {resultado} \n correctamente para el cluster {cluster}")
